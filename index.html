@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<!--
+        Optional JavaScript
+        jQuery first, then Popper.js, then Bootstrap JS
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+-->
+
+
+            <!-- JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+
+    <title>하루만 산다</title>
+
+    <link rel="shortcut icon" href="#">
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300&family=Source+Sans+Pro:wght@200&display=swap" rel="stylesheet"/>
+
+
+</head>
+
+<body>
+    <!--상단-->
+    <nav class="navbar">
+        <div class="navbar__logo">
+            <a href="#"><img src="image/youtube.png">Title</a>
+        </div>
+        <ul class="navbar__list">
+            <li><a href="#">Login</a></li>
+            <li><a href="#">저장기록</a></li>
+        </ul>
+    </nav>
+
+    <!--메인-->
+    <div class="searching-result">
+        <div class="phrases">
+            <h1>[검색결과]로 검색한 결과입니다</h1>
+        </div>
+        <div class="hashtag">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+        </div>
+        <div class="intersetBtn">
+            <button class="btn btn-primary" id="savingBtn">저장하기</button>
+        </div>
+
+        <div id="post-box" style="display: none;"><!-- style="display: none;"-->
+            <div class="form-group">
+                hashtag
+            </div>
+            <div class="form-group">
+                <label for="area-memo">메모남기기</label>
+                <textarea class="form-control" id="area-memo" rows="3" placeholder="메모를 입력해보세요"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="area-keyword">중요키워드</label>
+                <input type="email" class="form-control" id="area-keyword" placeholder="키워드를 입력해보세요">
+            </div>
+            <div class="form-group">
+                <label for="area-link">링크남기기</label>
+                <input type="url" class="form-control" id="area-link" placeholder="링크남기기">
+            </div>
+            <button type="submit" class="btn btn-primary" id="submitBtn">저장</button>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+
+</body>
+
+</html>
