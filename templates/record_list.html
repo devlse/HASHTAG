@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+
+    <!-- 구글폰트 -->
+    <link href="https://fonts.googleapis.com/css?family=Stylish&display=swap" rel="stylesheet">
+
+
+    <title>하루살이 | 관심기록</title>
+    <!--link rel="shortcut icon" href="#"-->
+
+    <!-- style -->
+    <link href="../templates/Result.html" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        * {
+            font-family: "Stylish", sans-serif;
+        }
+
+        body {
+            background: aliceblue;
+        }
+
+        .wrap {
+            width: 900px;
+            margin: auto;
+        }
+
+        #saved-record {
+            background: blanchedalmond;
+            width: 500px;
+            margin: 20px auto;
+            padding: 50px;
+            border: 1px #9d9b9b solid;
+            border-radius: 5px;
+        }
+    </style>
+
+    <script>
+        let globalVariable;
+        $(document).ready(function () {
+            //showArticles();
+        });
+        /*저쪽에서 저장한 해시태그를 현재 시간 값을 클래스나 아이디 값으로 정하자~해시태그 값을 받아와야 한다*/
+        function listOpen(e) {
+            if ($("#saved-record").css("display") == "block") {
+                $("#saved-record").hide();
+            } else {
+                $("#saved-record").show();
+            }
+
+            //id 값 가져오기
+            alert(e);
+            globalVariable = e;
+
+            //id값 만들기
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = ("0" + (1 + now.getMonth())).slice(-2);
+            const day = ("0" + now.getDate()).slice(-2);
+            const hours = ('0' + now.getHours()).slice(-2);
+            const minutes = ('0' + now.getMinutes()).slice(-2);
+            const seconds = ('0' + now.getSeconds()).slice(-2);
+            const newid = year + month + day + hours + minutes + seconds;
+            const z = toString(newid);
+            console.log(z);
+        }
+
+        function deleteBtn() {
+            //지우는거 + DB안에 저장된 내용도 지워야한다**
+            const id = globalVariable;
+            const div = document.getElementById(id);
+
+            $("#saved-record").hide();
+            if (confirm("삭제하시겠습니까?")) {
+                alert('삭제되었습니다');
+                div.remove();
+            } else {
+                //alert("놉");
+                $("#saved-record").show();
+            }
+            //window.location.reload();
+        }
+    </script>
+
+
+</head>
+
+<body>
+    <div class="wrap">
+        <!--상단-->
+        <nav class="navbar">
+            <div class="navbar__logo">
+                <!--메인화면으로 링크넣기!-->
+                <a href="#"><img src="../static/image/youtube.png">Title</a>
+            </div>
+            <ul class="navbar__list">
+                <li><a href="#">LogOut</a></li>
+                <!--로그인/아웃 구현은 나중에. 어려우면 빼고-->
+                <li><a href="Result.html">다시 검색하기(메인화면 링크)</a></li>
+            </ul>
+        </nav>
+
+        <div class="save-list" style="padding-top: 20px">
+            <div style="text-align: center;">
+                <h1>내가 관심등록한 키워드</h1>
+            </div>
+            <div class="hashtag">
+                <!--temp_html에 밑의 두 함수 포함하기!-->
+                <div id="aaa" onclick="listOpen(this.id)" style='cursor:pointer'>저장했던 해시태그</div>
+                <div id="bbb">bbbbbb</div>
+            </div>
+        </div>
+
+        <div id="saved-record" class="form-post" style="display: none">
+            <div>
+                <div class="form-group">
+                    <label for="area-crawling">결과?</label>
+                    <textarea class="form-control" id="area-crawling" rows="3" placeholder="크롤링 결과들 보여주기"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="area-memo">메모</label>
+                    <textarea class="form-control" id="area-memo" rows="3" placeholder="메모를 입력해보세요"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="area-keyword">중요키워드</label>
+                    <input type="email" class="form-control" id="area-keyword" placeholder="키워드를 입력해보세요">
+                </div>
+                <div class="form-group">
+                    <label for="area-link">링크</label>
+                    <input type="url" class="form-control" id="area-link" placeholder="링크남기기">
+                </div>
+                <!--질문**div에서 아이디 어케 가져와?-->
+                <button type="button" class="btn btn-primary" onclick="deleteBtn()">삭제버튼이다!</button>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
