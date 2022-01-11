@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <title>하루살이</title>
+
+    <style>
+         .mainbg {
+            position: fixed;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+
+            background: linear-gradient(104deg, #AB78FF 0%, #FFE484 100%);
+        }
+
+         .main {
+             position: fixed;
+             z-index: 2;
+             width: 1300px;
+             margin: 50px auto auto 110px;
+         }
+
+         .headerbox {
+             width: 1300px;
+             height: 80px;
+             margin: 0 auto;
+
+             background: #FFFFFF;
+             border-radius: 9px;
+         }
+
+         .loginbtn {
+             position: fixed;
+             margin: 20px 1090px auto;
+             border-radius: 3px;
+         }
+
+         .signupbtn {
+             position: fixed;
+             margin: 20px 1180px auto;
+             border-radius: 3px;
+         }
+
+         .searchbox {
+             position: fixed;
+             width: 450px;
+             margin: 150px 580px auto;
+         }
+
+         .title {
+             position: absolute;
+             width: 400px;
+             margin: 0 auto;
+             font-style: normal;
+             font-weight: normal;
+             font-size: 50px;
+             line-height: 60px;
+
+             text-align: center;
+             color: #FFFFFF;
+         }
+
+         .input {
+             position: absolute;
+             width: 400px;
+             margin: 72px auto;
+         }
+
+         .searchbtn {
+             position: absolute;
+             margin: 70px 410px auto;
+
+             background: #FFFFFF;
+             border-radius: 9px;
+         }
+
+         .recentbox {
+             position: fixed;
+             width: 400px;
+             margin: 130px auto auto 0px;
+
+             background: #FFFFFF;
+             border-radius: 9px;
+         }
+
+         .todaybox {
+             position: fixed;
+             width: 250px;
+             height: 395px;
+             margin: 100px auto auto 80px;
+
+             background: rgba(255, 255, 255, 0.5);
+             border-radius: 9px;
+         }
+
+         .rankbox {
+             background: #FFFFFF;
+             border-radius: 9px;
+             border-collapse: separate;
+             border-spacing: 5px;
+         }
+
+         .table {
+             margin: 10px auto auto 10px;
+             border-collapse: separate;
+             border-spacing: 5px;
+         }
+
+         .link {
+              color: black
+         }
+
+
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="headerbox">
+            <div class="loginbtn">
+                <button type="button" class="btn text-white" style="background-color: #AB78FF;">Login</button>
+            </div>
+            <div class="signupbtn">
+                <button type="button" class="btn text-white" style="background-color: #AB78FF;">Sign up</button>
+            </div>
+        </div>
+        <div class="searchbox">
+            <div class="title">TITLE</div>
+            <div class="searchbtn">
+             <button type="button" class="btn text-secondary btn-lg" style="background-color:white"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#AB78FF" class="bi bi-search" viewBox="0 0 16 16">
+             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+         </svg></button>
+         </div>
+            <div class="input">
+                <input class="form-control form-control-lg" type="text" placeholder="search" style="border: none; background: rgba(255, 255, 255, 0.5);">
+            </div>
+            <div class="recentbox">
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action" style="border: none"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
+                        <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+                    </svg>&nbsp;&nbsp;&nbsp;최근 검색어1</a>
+                    <a href="#" class="list-group-item list-group-item-action" style="border: none"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
+                        <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+                    </svg>&nbsp;&nbsp;&nbsp;최근 검색어2</a>
+                    <a href="#" class="list-group-item list-group-item-action" style="border: none"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
+                        <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+                    </svg>&nbsp;&nbsp;&nbsp;최근 검색어3</a>
+                </div>
+            </div>
+        </div>
+        <div class="todaybox">
+            <table class='table borderless'>
+                <tr>
+                    <th class="rankbox" scope="row" style="border-top: none;color: #AB78FF;width: 16.66%;text-align: center;">1</th>
+                    <td style="border-top:none;"><a href="#" class="link" style="text-decoration:none;text-align: center;"}>하루</td>
+                </tr>
+                <tr>
+                    <th class="rankbox" scope="row" style="border-top: none;color: #AB78FF;width: 16.66%;text-align: center;">2</th>
+                    <td style="border-top:none;"><a href="#" class="link" style="text-decoration:none"}>비타민Z</td>
+                </tr>
+                <tr>
+                    <th class="rankbox" scope="row" style="border-top: none;color: #AB78FF;width: 16.66%;text-align: center;">3</th>
+                    <td style="border-top:none;"><a href="#" class="link" style="text-decoration:none"}>!!!</td>
+                </tr>
+                <tr>
+                    <th class="rankbox" scope="row" style="border-top: none;color: #AB78FF;width: 16.66%;text-align: center;">4</th>
+                    <td style="border-top:none;"><a href="#" class="link" style="text-decoration:none"}>song4</td>
+                </tr>
+                <tr>
+                    <th class="rankbox" scope="row" style="border-top: none;color: #AB78FF;width: 16.66%;text-align: center;">5</th>
+                    <td style="border-top:none;"><a href="#" class="link" style="text-decoration:none"}>suppper</td>
+                </tr>
+                <tr>
+                    <th class="rankbox" scope="row" style="border-top: none;color: #AB78FF;width: 16.66%;text-align: center;">6</th>
+                    <td style="border-top:none;"><a href="#" class="link" style="text-decoration:none"}>H</td>
+                </tr>
+                <tr>
+                    <th class="rankbox" scope="row" style="border-top: none;color: #AB78FF;width: 16.66%;text-align: center;">7</th>
+                    <td style="border-top:none;"><a href="#" class="link" style="text-decoration:none"}>하루살이팀</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="mainbg"></div>
+</body>
+
+</html>
