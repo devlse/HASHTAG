@@ -1,0 +1,77 @@
+body {
+    background: linear-gradient(103.81deg, #AB78FF 0.23%, #FFE484 100%) no-repeat;
+    height: 100vh;
+    font-family: 'DM Sans', sans-serif;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.text-center {
+    text-align: center;
+}
+
+
+.glassmorphism {
+    width: 600px;
+    height: 750px;
+    left: 669px;
+    top: 216px;
+
+    margin: auto;
+    margin-top: 90px;
+    display: flex;
+    align-items: center;
+
+    background: rgba(255, 255, 255, 0.2);
+    border: 3px solid rgba(255, 255, 255, 0.4);
+    box-sizing: border-box;
+    backdrop-filter: blur(20px);
+    /* Note: backdrop-filter has minimal browser support */
+    border-radius: 15px;
+    /*10px*/
+}
+
+.login-box {
+    width: 400px;
+    height: 600px;
+    margin: auto;
+    font-size: 20px;
+    color: white;
+}
+
+.login-title {
+    margin-bottom: 110px;
+    font-size: 40px;
+    font-weight: 500;
+}
+
+.input-button {
+    width: 350px;
+    background: rgba(255, 255, 255, 0.4);
+    border: none;
+    display: block;
+    margin: 10px auto 40px;
+    padding: 20px 15px;
+    border-radius: 100px;
+}
+
+.login-button {
+    width: 200px;
+    background: #6667AB;
+    box-shadow: 0px 4px 7px rgba(69, 146, 218, 0.25);
+    color: white;
+    border: none;
+    padding: 15px 0;
+    border-radius: 100px;
+    display: block;
+    margin: 50px auto;
+    font-size: 19px;
+}
+
+.login-button:hover {
+    cursor: pointer;
+}
+
+.login-box a {
+    text-decoration: none;
+    color: white;
+}
