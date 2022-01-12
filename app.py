@@ -29,7 +29,9 @@ def signUpPage():
 def signin():
     id_receive = request.form['id_give']
     pw_receive = request.form['pw_give']
+    # DB에서 아이디 비교
     if db.user.find_one({'id':id_receive},{'_id':False}):
+        # 일치하면 패스워드 비교
         if db.user.find_one({'pw': pw_receive}, {'_id': False}):
             return jsonify({'signIn': '1'})
     return jsonify({'msg': '아이디/비밀번호가 틀립니다'})
@@ -39,20 +41,19 @@ def signin():
 def signup():
     id_receive = request.form['id_give']
     pw_receive = request.form['pw_give']
-    question_receive = request.form['question_give']
-    answer_receive = request.form['answer_give']
+    # 아이디값 공백 검사
     if id_receive == "":
         return({'msg':'아이디를 입력해주세요'})
+    # DB에서 중복 아이디 검사
     elif db.user.find_one({'id':id_receive},{'_id':False}):
         return jsonify({'msg':'아이디가 있습니다'})
+    # 패스워드값 공백 검사
     elif pw_receive == "":
         return ({'msg': '비밀번호를 입력해주세요'})
 
     user ={
         'id':id_receive,
         'pw':pw_receive,
-        'question':question_receive,
-        'answer':answer_receive
     }
     # db.user.insert_one(user)
     return jsonify({'signUp': '1'})
