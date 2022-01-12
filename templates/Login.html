@@ -12,6 +12,31 @@
         rel="stylesheet">
     <!-- CSS -->
     <link rel="stylesheet" href="../static/Login.css">
+    <!-- ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- script -->
+    <script>
+        function login() {
+            let id = $('#id').val()
+            let pw = $('#pw').val()
+            $.ajax({
+                type: "POST",
+                url: "/signInPage/in",
+                data: {
+                    id_give: id,
+                    pw_give: pw
+                },
+                success: function (response) {
+                    if (data == 'false') {
+                        alert(response['msg']);
+                    } else {
+                        alert('로그인 성공!') // 연결되는지 확인하고 삭제
+                        location.href = 'Mainlogout.html'
+                    }
+                }
+            })
+        }
+    </script>
     <title>로그인</title>
 </head>
 
@@ -23,11 +48,11 @@
                 <div>ID</div>
                 <input type="text" class="input-button" id="id" placeholder=" ">
                 <div>Password</div>
-                <input type="text" class="input-button" id="pw" placeholder=" ">
+                <input type="password" class="input-button" id="pw" placeholder=" ">
                 </br>
-                <input type="button" value="Login" class="login-button">
+                <input type="button" onclick="login()" value="Login" class="login-button">
             </div>
-            <div class="text-center">Don't have an account? <a href="#">Sign up</a> </div>
+            <div class="text-center">Don't have an account? <a href="Account.html">Sign up</a> </div>
         </div>
     </div>
 </body>

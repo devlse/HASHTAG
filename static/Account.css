@@ -1,8 +1,10 @@
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
 body {
     background: linear-gradient(103.81deg, #AB78FF 0.23%, #FFE484 100%) no-repeat;
     height: 100vh;
-    font-family: 'DM Sans', sans-serif;
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: 600;
 }
 
 .text-center {
@@ -41,7 +43,7 @@ body {
 .login-title {
     margin-bottom: 110px;
     font-size: 40px;
-    font-weight: 500;
+    font-weight: 700;
 }
 
 .input-button {
