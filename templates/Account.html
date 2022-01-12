@@ -17,18 +17,18 @@
     <!-- script -->
     <script>
         function account() {
-            let createId = $('#create-id').val()
-            let createPw = $('#create-pw').val()
-            console.log(createId, createPw)
+            let id = $('#id').val()
+            let pw = $('#pw').val()
             $.ajax({
                 type: "POST",
-                url: "/login",
+                url: "/signUpPage/up",
                 data: {
-                    createId_give: createId,
-                    createPw_give: createPw
+                    id_give: id,
+                    pw_give: pw
                 },
                 success: function (response) {
-                    alert('연결되었습니다!') // 연결확인 후 구현
+                    alert('가입되었습니다!') // 연결확인 후 구현
+                    location.href = 'Login.html'
                 }
             })
         }
