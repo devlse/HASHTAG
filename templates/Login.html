@@ -19,20 +19,19 @@
         function login() {
             let id = $('#id').val()
             let pw = $('#pw').val()
-            console.log(id, pw)
             $.ajax({
                 type: "POST",
-                url: "/login",
+                url: "/signInPage/in",
                 data: {
                     id_give: id,
                     pw_give: pw
                 },
                 success: function (response) {
                     if (data == 'false') {
-                        alert('아이디/비밀번호가 일치하지 않습니다.');
+                        alert(response['msg']);
                     } else {
                         alert('로그인 성공!') // 연결되는지 확인하고 삭제
-                        location.href = 'main.html'
+                        location.href = 'Mainlogout.html'
                     }
                 }
             })
