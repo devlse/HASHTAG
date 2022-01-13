@@ -1,16 +1,15 @@
-from urllib.request import urlopen
 from urllib.parse import quote_plus
 
-from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+
+import pandas as pd
 import time
 
 baseUrl = 'https://www.instagram.com/explore/tags/'
 plusUrl = input('검색할 키워드를 입력하세요')
-# url = baseUrl + plusUrl 
 # 만약 plusUrl 그대로 들어가면 input이 합정동이면 
 # 아스키값이 아닌 그냥 합정동으로 들어가서 그부분을 치환해서 돌려줘야 함 = quote_plus
 url = baseUrl + quote_plus(plusUrl)
@@ -18,7 +17,6 @@ url = baseUrl + quote_plus(plusUrl)
 options = webdriver.ChromeOptions()
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
 driver = webdriver.Chrome(options=options)
-
 
 driver.get("https://www.instagram.com/accounts/login/" )
 
@@ -36,43 +34,41 @@ time.sleep(2)
 login_button = driver.find_element(By.XPATH,'//*[@id="loginForm"]/div/div[3]/button')
 login_button.click()
 
-# 로그인안될때 에러 리턴, 인터넷이 안되거나 할때
+# 로그인이 안되거나, 인터넷이 안될때 에러 처리
 time.sleep(2)
 
 save_later_button = WebDriverWait(driver,10).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="react-root"]/div/div/section/main/div/div/div/div/button')))
 save_later_button.click()
 
-# 처리 안해줘도 링크 잘 옮겨감.
-# alert_later_button = WebDriverWait(driver,10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[6]/div/div/div/div[3]/button[2]')))
-# alert_later_button.click()
-
 #여기서 함수 끊어주면 좋을 것 같은디 우선 이어서..!
 #링크 옮겨도 로그인 상태 유지됨!
 driver.get(url)
-# search_space = WebDriverWait(driver,10).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="react-root"]/div/div/section/nav/div[2]/div/div/div[2]/input')))
-# search_space.send_keys(plusUrl)
 
 first_post = WebDriverWait(driver,10).until(EC.visibility_of_element_located((By.CSS_SELECTOR ,'div.v1Nh3.kIKUG._bz0w')))
 first_post.click() #div사이에 공백있으면 .으로 replace -- 이유는 유튭 참고
 # 이 first_post가 없을때의 에러 처리 (검색어입력이 잘못되었을때)
 
-# 아래부분은 에러가 떠서 알아봐야할 것 같음
+data = []
+crawl_post_number = 5
+for i in range(crawl_post_number):
+    time.sleep(3)
+    #hashtag_array = WebDriverWait(driver,10).until(EC.visibility_of_all_elements_located((By.CSS_SELECTOR , 'a.xil3i')))
+    hashtag_array = driver.find_elements(By.CSS_SELECTOR , 'a.xil3i')
+    for hashtag in hashtag_array:
+        data.append(hashtag.text.replace('#',''))
 
-#beautifulsoup이나 urlopen같은 경우에는 read한 다음에 분석했는데
-# #selenium은 
-# html = driver.page_source
-# soup = BeautifulSoup(html)
+    #다음 포스트로 넘어가기
+    next_button = WebDriverWait(driver,10).until(EC.visibility_of_element_located((By.CSS_SELECTOR , 'body > div.RnEpo._Yhr4 > div.Z2Inc._7c9RR > div > div.l8mY4.feth3 > button')))
+    next_button.click()
+    
 
-# #soup, 즉 저 html에서 select를 사용해서 뽑아오기
-# insta = soup.select()
+data_frame = pd.DataFrame(data)
+data_frame.to_csv('crawled_data.csv', index=False, encoding='utf-8-sig')
 
+# beautiful soup을 활용해서 데이터를 긁어올 수 있지만
+# 지금같은 경우는 다른 잡다한 정보는 필요없고 오로지 해시태그 정보만 필요해서 Bs4를 
+# 활용하지 않을 것.
+driver.quit()
 while(True):
     pass
-# driver.get(url)
-
-# #selenium이 느리기 때문에 driver이 뜨기 전에 page source가 불러와질 수 도 있음
-# #그럴 경우를 대비해서 시간 차를 좀 주기
-# time.sleep(3)
-
-
 
