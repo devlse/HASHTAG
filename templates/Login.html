@@ -21,14 +21,14 @@
             let pw = $('#pw').val()
             $.ajax({
                 type: "POST",
-                url: "/login",
+                url: "/login/in",
                 data: {
                     id_give: id,
                     pw_give: pw
                 },
                 success: function (response) {
                     alert('로그인 성공');
-                    window.location.href = 'MainlogIn.html'
+                    window.location.href = "/main"
                 },
                 error: function () {
                     alert('로그인 정보가 올바르지 않습니다.')
@@ -52,7 +52,7 @@
                 </br>
                 <input type="button" onclick="login()" value="Login" class="login-button">
             </div>
-            <div class="text-center">Don't have an account? <a href="Account.html">Sign up</a> </div>
+            <div class="text-center">Don't have an account? <a href="/signup">Sign up</a> </div>
         </div>
     </div>
 </body>
