@@ -12,6 +12,31 @@
         rel="stylesheet">
     <!-- CSS -->
     <link rel="stylesheet" href="../static/Account.css">
+    <!-- ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- script -->
+    <script>
+        function account() {
+            let id = $('#id').val()
+            let pw = $('#pw').val()
+            $.ajax({
+                type: "POST",
+                url: "/signup",
+                data: {
+                    id_give: id,
+                    pw_give: pw
+                },
+                success: function (response) {
+                    alert('가입되었습니다!')
+                    window.location.href = 'Login.html'
+                },
+                error: function () {
+                    alert('오류')
+                    window.location.reload()
+                }
+            })
+        }
+    </script>
     <title>회원가입</title>
 </head>
 
@@ -23,9 +48,9 @@
                 <div>ID</div>
                 <input type="text" class="input-button" id="id" placeholder="Input your ID">
                 <div>Password</div>
-                <input type="text" class="input-button" id="pw" placeholder="Input your Password">
+                <input type="password" class="input-button" id="pw" placeholder="Input your Password">
                 </br>
-                <input type="button" value="Sign up" class="login-button">
+                <input type="button" onclick="account()" value="Sign up" class="login-button">
             </div>
         </div>
     </div>

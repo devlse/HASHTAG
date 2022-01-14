@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="7f6a9258-6a66-4b7c-b4b2-b8b39c6cd78c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/templates/Mainlogout.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Mainlogout.html" afterDir="false" />
+>>>>>>> 8ac91486741ed06f40eeca7d0ead0f373f911e4d
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -22,10 +36,18 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+=======
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+>>>>>>> 8ac91486741ed06f40eeca7d0ead0f373f911e4d
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager" selected="Flask server.Flask (app.py)">
@@ -81,14 +103,80 @@
       <option name="presentableId" value="Default" />
       <updated>1641969914290</updated>
       <workItem from="1641969917021" duration="8000" />
+<<<<<<< HEAD
       <workItem from="1641969933496" duration="2118000" />
       <workItem from="1642154858711" duration="50000" />
       <workItem from="1642162789447" duration="22000" />
+=======
+      <workItem from="1641969933496" duration="893000" />
+      <workItem from="1642044839287" duration="733000" />
+      <workItem from="1642060366494" duration="247000" />
+      <workItem from="1642060751679" duration="48000" />
+      <workItem from="1642072821497" duration="614000" />
+>>>>>>> 8ac91486741ed06f40eeca7d0ead0f373f911e4d
     </task>
+    <task id="LOCAL-00001" summary="메인 로그인">
+      <created>1641992230588</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1641992230588</updated>
+    </task>
+    <task id="LOCAL-00002" summary="메인 로그인 / 주석 추가">
+      <created>1641993053742</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1641993053742</updated>
+    </task>
+    <task id="LOCAL-00003" summary="메인 로그아웃 / 주석 추가">
+      <created>1641993248769</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1641993248769</updated>
+    </task>
+    <task id="LOCAL-00004" summary="메인 로그인 / 주석 추가">
+      <created>1641993450551</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1641993450552</updated>
+    </task>
+    <task id="LOCAL-00005" summary="메인 로그아웃 / 주석 추가">
+      <created>1641993664601</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1641993664601</updated>
+    </task>
+    <task id="LOCAL-00006" summary="메인 로그아웃 / 디자인 수정">
+      <created>1641997406586</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1641997406586</updated>
+    </task>
+    <task id="LOCAL-00007" summary="메인 로그인 / 디자인 수정">
+      <created>1641997627414</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1641997627414</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="메인 로그인" />
+    <MESSAGE value="메인 로그인 / 주석 추가" />
+    <MESSAGE value="메인 로그아웃 / 주석 추가" />
+    <MESSAGE value="메인 로그아웃 / 디자인 수정" />
+    <MESSAGE value="메인 로그인 / 디자인 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="메인 로그인 / 디자인 수정" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/HASHTAG$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1641970104589" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
