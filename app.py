@@ -15,7 +15,7 @@ def mainPage():
     return render_template('Mainlogout.html')
 
 @app.route('/main')
-def mainPage():
+def mainPage2():
     return render_template('Mainlogin.html')
 
 #로그인페이지
