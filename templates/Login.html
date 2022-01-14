@@ -21,18 +21,18 @@
             let pw = $('#pw').val()
             $.ajax({
                 type: "POST",
-                url: "/signInPage/in",
+                url: "/login",
                 data: {
                     id_give: id,
                     pw_give: pw
                 },
                 success: function (response) {
-                    if (data == 'false') {
-                        alert(response['msg']);
-                    } else {
-                        alert('로그인 성공!') // 연결되는지 확인하고 삭제
-                        location.href = 'Mainlogout.html'
-                    }
+                    alert('로그인 성공');
+                    window.location.href = 'MainlogIn.html'
+                },
+                error: function () {
+                    alert('로그인 정보가 올바르지 않습니다.')
+                    window.location.reload();
                 }
             })
         }
