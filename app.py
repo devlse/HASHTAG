@@ -14,6 +14,10 @@ db = client.dbmakingchallenge
 def mainPage():
     return render_template('Mainlogout.html')
 
+@app.route('/main')
+def mainPage():
+    return render_template('Mainlogin.html')
+
 #로그인페이지
 @app.route('/login')
 def signInPage():
