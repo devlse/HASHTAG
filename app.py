@@ -28,6 +28,11 @@ def signInPage():
 def signUpPage():
     return render_template('Account.html')
 
+#관심단어 등록 페이지
+@app.route('/myword')
+def mywordPage():
+    return render_template('record_list.html')
+
 #로그인버튼
 @app.route('/login/in', methods=['POST'])
 def signin():
