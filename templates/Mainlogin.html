@@ -19,8 +19,24 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+    <script type="text/javascript">
+            function makeSearch() {
+                let search = $('#searchValue').val()
+                // POST /review 에 저장(Create)을 요청합니다.
+                $.ajax({
+                    type: "POST",
+                    url: "/search",
+                    data: { searchWord_give: search},
+                    success: function (response) {
+                        alert(response["msg"]);
+                        window.location.reload();
+                    }
+                })
+            }
 
+    </script>
     <title>하루살이</title>
+
 <!--box로 이름이 끝나는 클래스는 디자인 요소입니다. 데이터 연결 및 수정하지 마세요.-->
 <!--메인로그아웃 페이지와 동일한데 로그인 가입 버튼이 사라지고 유저 아이디 버튼이 생겼습니다-->
     <style>
@@ -143,13 +159,13 @@
             <div class="title">TITLE</div>
 <!--            class input에 넣은 값으로 검색 페이지 연결-->
             <div class="searchbtn">
-             <button type="button" class="btn text-secondary btn-lg" style="background-color:white"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#6667AB" class="bi bi-search" viewBox="0 0 16 16">
+             <button onclick="makeSearch()" type="button" class="btn text-secondary btn-lg" style="background-color:white"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#6667AB" class="bi bi-search" viewBox="0 0 16 16">
              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
          </svg></button>
          </div>
 <!--            검색할 값-->
             <div class="input">
-                <input class="form-control form-control-lg" type="text" placeholder="search" style="border: none; background: rgba(255, 255, 255, 0.5);">
+                <input class="form-control form-control-lg" type="text" placeholder="search" style="border: none; background: rgba(255, 255, 255, 0.5);" id = "searchValue">
             </div>
             <div class="recentbox">
                 <div class="list-group">
