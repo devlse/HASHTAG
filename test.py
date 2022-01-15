@@ -12,6 +12,7 @@ app.config.update(
 
 # JWT 확장 모듈을 flask 어플리케이션에 등록
 jwt = JWTManager(app)
+
 admin_id = "1234"
 admin_pw = "qwer"
 
