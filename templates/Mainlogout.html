@@ -20,8 +20,19 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
+    <script>
+        function gotologin() {
+            window.location.href = "/login"
+        }
+
+        function gotosignup() {
+            window.location.href = "/signup"
+        }
+
+    </script>
+
     <title>하루살이</title>
-<!--box로 이름이 끝나는 클래스는 디자인 요소입니다. 데이터 연결 및 수정하지 마세요.-->
+
     <style>
         * {
             font-family: 'Nanum Gothic', sans-serif;
@@ -140,11 +151,11 @@
         <div class="headerbox">
 <!--            로그인 페이지로 연결 완료-->
             <div class="loginbtn">
-                <button type="button" class="btn text-white" onclick="location.href='Login.html'" style="background-color: #6667AB;">Login</button>
+                <button type="button" class="btn text-white" onclick="gotologin()" style="background-color: #6667AB;">Login</button>
             </div>
 <!--            회원가입 페이지로 연결 완료-->
             <div class="signupbtn">
-                <button type="button" class="btn text-white" onclick="location.href='Account.html'" style="background-color: #6667AB;">Sign up</button>
+                <button type="button" class="btn text-white" onclick="gotosignup()" style="background-color: #6667AB;">Sign up</button>
             </div>
         </div>
         <div class="searchbox">
