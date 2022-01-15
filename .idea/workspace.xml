@@ -28,7 +28,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Flask server.Flask (app.py)">
+  <component name="RunManager" selected="Python.test">
     <configuration name="HASHTAG" type="PythonConfigurationType" factoryName="Python">
       <module name="HASHTAG" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -43,6 +43,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="HASHTAG" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../스파르타 코딩/python" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../스파르타 코딩/python/test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -68,6 +90,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.test" />
         <item itemvalue="Flask server.Flask (app.py)" />
       </list>
     </recent_temporary>
@@ -84,8 +107,19 @@
       <workItem from="1641969933496" duration="2118000" />
       <workItem from="1642154858711" duration="50000" />
       <workItem from="1642162804208" duration="450000" />
+<<<<<<< HEAD
       <workItem from="1642163266521" duration="12961000" />
       <workItem from="1642251823865" duration="2000" />
+=======
+      <workItem from="1642163266521" duration="5526000" />
+      <workItem from="1642240654732" duration="147000" />
+      <workItem from="1642240924176" duration="630000" />
+      <workItem from="1642242008551" duration="143000" />
+      <workItem from="1642242351521" duration="536000" />
+      <workItem from="1642243201243" duration="10000" />
+      <workItem from="1642244661357" duration="29000" />
+      <workItem from="1642250223254" duration="68000" />
+>>>>>>> 84a9e30327b4162d66ecf8dc3f26bb711b4fbc64
     </task>
     <servers />
   </component>
@@ -93,7 +127,11 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+<<<<<<< HEAD
     <SUITE FILE_PATH="coverage/HASHTAG$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1642169375796" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+=======
+    <SUITE FILE_PATH="coverage/HASHTAG$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1641970104589" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+>>>>>>> 84a9e30327b4162d66ecf8dc3f26bb711b4fbc64
     <SUITE FILE_PATH="coverage/HASHTAG$HASHTAG.coverage" NAME="HASHTAG Coverage Results" MODIFIED="1641969948453" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

@@ -21,17 +21,17 @@
             let pw = $('#pw').val()
             $.ajax({
                 type: "POST",
-                url: "/signup",
+                url: "/signup/up",
                 data: {
                     id_give: id,
                     pw_give: pw
                 },
                 success: function (response) {
                     alert('가입되었습니다!')
-                    window.location.href = 'Login.html'
+                    window.location.href = '/login'
                 },
                 error: function () {
-                    alert('오류')
+                    alert('오류입니다!')
                     window.location.reload()
                 }
             })

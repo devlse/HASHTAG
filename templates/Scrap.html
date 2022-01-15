@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <title>하루살이</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Stylish&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Nanum Gothic', sans-serif;
+        }
+
+        .wrap {
+            width: 1000px;
+            margin: 50px auto;
+        }
+
+        .card {
+            border-radius: 15px;
+        }
+
+        .card-time {
+            display: inline-block;
+            width: 250px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-img-top {
+            height: 250px;
+            object-fit: cover;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .card-title {
+            display: inline-block;
+            width: 250px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: #6667AB;
+        }
+
+        .card-text {
+            display: inline-block;
+            width: 250px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: black;
+        }
+
+    </style>
+    <script>
+        $(document).ready(function () {
+            $('#cards-box').empty('');
+            listing();
+        });
+
+        function listing() {
+            //확인용으로 나홀로 메모장 불러옴
+            $.ajax({
+							  type: "GET",
+							  url: "http://spartacodingclub.shop/post",
+							  data: {},
+							  success: function (response) {
+							      let articles = response['articles'];
+							      for (let i = 0; i < articles.length; i++) {
+							          let article = articles[i];
+							          let image = article["image"];
+							          let url = article["url"];
+							          let title = article["title"];
+							          let desc = article["desc"];
+                                      //let date = article["date"]
+                                      let temp_html = `<div class="card">
+                                                        <a href="${url}" style="text-decoration:none">
+                                                                <!--이미지가 없으면 브런치 공홈 로고 불러옴-->
+                                                             <img class="card-img-top" src="${image}" onerror="this.src='https://img1.daumcdn.net/thumb/C400x400.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/2xr/image/lylAHyGq9DgVNt5QFKYhQBIYPko.png'" alt="Card image cap">
+                                                             <div class="card-body">
+                                                               <h5 class="card-title" style="text-decoration:none">${title}</h5>
+                                                               <p class="card-text">${desc}</p>
+                                                                <!--타이틀이 아닌 작성일을 가져올 예정 -->
+                                                               <p class="card-time"><small style="color: grey"><${title}</small></p>
+                                                             </div>
+							                             </a>
+							                           </div>`;
+							          $('#cards-box').append(temp_html);
+							      }
+							  }
+							})
+        }
+    </script>
+</head>
+
+<body>
+    <div class="scrapbg"></div>
+    <div class="wrap">
+      <div id="cards-box" class="card-columns">
+          <div class="card">
+              <a href="#" style="text-decoration:none">
+                  <img class="card-img-top" src="..." alt="Card image cap"></a>
+                  <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      <p class="card-time"><small style="color: grey">Last updated 3 mins ago</small></p>
+                  </div>
+              </a>
+          </div>
+        </div>
+    </div>
+</body>
+
+</html>
