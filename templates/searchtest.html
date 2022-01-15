@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#searchbox').empty('');
+            listing();
+        });
+
+        function listing() {
+            //확인용으로 나홀로 메모장 불러옴
+            $.ajax({
+							  type: "GET",
+							  url: "http://spartacodingclub.shop/post",
+							  data: {},
+							  success: function (response) {
+                                  let articles = response['articles'];
+                                  for (let i = 0; i < articles.length; i++) {
+                                      let article = articles[i];
+                                      let title = article["title"];
+
+                                      let temp_html = `<form action="https://search.naver.com/search.naver">
+                                                            <div class="search">
+                                                                <input type="hidden" name="query" value="${title}">
+                                                                <button type="submit" class="btn text-white" style="background-color: #6667AB;">${title}</button>
+                                                            </div>
+                                                        </form>`;
+							          $('#searchbox').append(temp_html);
+							      }
+							  }
+							})
+        }
+    </script>
+        <title>하루살이</title>
+
+    <style>
+        * {
+            font-family: 'Nanum Gothic', sans-serif;
+        }
+    </style>
+
+</head>
+<body>
+    <section>
+        <div id="searchbox">
+            <form action="https://search.naver.com/search.naver">
+                <div class="search">
+                    <input type="hidden" name="query" value="값">
+                    <button type="submit" class="btn text-white" style="background-color: #6667AB;">해시태그</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

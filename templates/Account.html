@@ -27,12 +27,13 @@
                     pw_give: pw
                 },
                 success: function (response) {
-                    alert('가입되었습니다!')
-                    window.location.href = '/login'
-                },
-                error: function () {
-                    alert('오류입니다!')
-                    window.location.reload()
+                    if (response.signUp == '1') {
+                        alert('가입되었습니다!')
+                        window.location.href = '/login'
+                    } else {
+                        alert(response['msg'])
+                        window.location.reload();
+                    }
                 }
             })
         }

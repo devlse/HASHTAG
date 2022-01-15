@@ -3,8 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(()=>{
+
+        })
+        function login() {
+            let id = $('#id').val()
+            let pw = $('#pw').val()
+            $.ajax({
+                type: "POST",
+                url: "/login",
+                data: {id_give: id,pw_give: pw},
+                success: function () {
+                }
+            })
+        }
+    </script>
 </head>
 <body>
-
+<input id="id"/>
+<p></p>
+<input id="pw"/>
+<button onclick="login()">button</button>
 </body>
 </html>
