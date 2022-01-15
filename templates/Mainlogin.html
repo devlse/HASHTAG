@@ -21,8 +21,7 @@
         crossorigin="anonymous"></script>
 
     <title>하루살이</title>
-<!--box로 이름이 끝나는 클래스는 디자인 요소입니다. 데이터 연결 및 수정하지 마세요.-->
-<!--메인로그아웃 페이지와 동일한데 로그인 가입 버튼이 사라지고 유저 아이디 버튼이 생겼습니다-->
+
     <style>
         * {
             font-family: 'Nanum Gothic', sans-serif;
@@ -134,30 +133,30 @@
 <body>
     <div class="main">
         <div class="headerbox">
-<!--            1 유저 아이디 불러오기 / 2 누르면 관심 등록 페이지로 연결 완료-->
+<!-- 1 유저 아이디 불러오기 / 2 누르면 관심 등록 페이지로 연결-->
             <div class="useridbtn">
                 <button type="button" class="btn text-white" onclick="location.href='record_list.html'" style="background-color: #6667AB;">USER ID</button>
             </div>
         </div>
         <div class="searchbox">
             <div class="title">TITLE</div>
-<!--            class input에 넣은 값으로 검색 페이지 연결-->
+<!-- class input에 넣은 값으로 검색 페이지 연결-->
             <div class="searchbtn">
              <button type="button" class="btn text-secondary btn-lg" style="background-color:white"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#6667AB" class="bi bi-search" viewBox="0 0 16 16">
              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
          </svg></button>
          </div>
-<!--            검색할 값-->
+<!--검색할 값-->
             <div class="input">
                 <input class="form-control form-control-lg" type="text" placeholder="search" style="border: none; background: rgba(255, 255, 255, 0.5);">
             </div>
             <div class="recentbox">
                 <div class="list-group">
-<!--            최근에 검색한 값 3개까지만 불러오고 각각 누르면 해당 값 검색 페이지로 이동함 -->
+<!--최근에 검색한 값 3개까지만 불러오고 각각 누르면 해당 값 검색 페이지로 이동함 -->
                     <a href="#" class="list-group-item list-group-item-action" style="border: none"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#6667AB" class="bi bi-clock" viewBox="0 0 16 16">
                         <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
                         <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
-<!--                        검색어 앞에 띄어쓰기 코드 (&nbsp;&nbsp;&nbsp;) 있음-->
+<!--검색어 앞에 띄어쓰기 코드 (&nbsp;&nbsp;&nbsp;) 있음-->
                     </svg>&nbsp;&nbsp;&nbsp;최근 검색어1</a>
                     <a href="#" class="list-group-item list-group-item-action" style="border: none"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#6667AB" class="bi bi-clock" viewBox="0 0 16 16">
                         <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
@@ -171,7 +170,7 @@
             </div>
         </div>
         <div class="todaybox">
-<!--            많이 검색한 값 7개 불러오고 각각 누르면 해당 값 검색 페이지로 이동함-->
+<!--많이 검색한 값 7개 불러오고 각각 누르면 해당 값 검색 페이지로 이동함-->
             <table class='table'>
                 <tr>
                     <th class="rankbox" scope="row" style="border-top:none;color:#6667AB;width:16.66%;text-align:center;">1</th>
