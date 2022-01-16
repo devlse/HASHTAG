@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="7f6a9258-6a66-4b7c-b4b2-b8b39c6cd78c" name="Changes" comment="메인 / 페이지 연결 수정">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
+=======
+    <list default="true" id="a9f2d944-2744-4805-9b76-7975d09b2fb6" name="Changes" comment="" />
+>>>>>>> suppper
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,6 +20,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+<<<<<<< HEAD
+=======
+        <option value="JavaScript File" />
+>>>>>>> suppper
       </list>
     </option>
   </component>
@@ -33,10 +41,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProjectId" id="23aQrJRXCyqTq3oCtBDMf6RW6yT" />
+  <component name="ProjectId" id="23jgzaME1eg2bZqKdPOh6KipdJC" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -47,11 +52,14 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+=======
+>>>>>>> suppper
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager" selected="Python.app">
@@ -150,7 +158,7 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -170,10 +178,11 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7f6a9258-6a66-4b7c-b4b2-b8b39c6cd78c" name="Changes" comment="" />
-      <created>1641969914290</created>
+      <changelist id="a9f2d944-2744-4805-9b76-7975d09b2fb6" name="Changes" comment="" />
+      <created>1642253172871</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+<<<<<<< HEAD
       <updated>1641969914290</updated>
       <workItem from="1641969917021" duration="8000" />
       <workItem from="1641969933496" duration="2118000" />
@@ -196,6 +205,10 @@
 =======
       <workItem from="1642250223254" duration="8891000" />
 >>>>>>> b171704b19d8c7fdc053c417c540fa364698ca64
+=======
+      <updated>1642253172871</updated>
+      <workItem from="1642253175584" duration="494000" />
+>>>>>>> suppper
     </task>
     <task id="LOCAL-00001" summary="스크랩 페이지">
       <created>1642250310205</created>
@@ -233,6 +246,7 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <SUITE FILE_PATH="coverage/HASHTAG$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1642169375796" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
 =======
     <SUITE FILE_PATH="coverage/HASHTAG$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1641970104589" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -242,6 +256,9 @@
     <SUITE FILE_PATH="coverage/HASHTAG$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1641970104589" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/HASHTAG$app.coverage" NAME="app Coverage Results" MODIFIED="1642250746045" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../스파르타 코딩/project/alonememo" />
 >>>>>>> b171704b19d8c7fdc053c417c540fa364698ca64
+=======
+    <SUITE FILE_PATH="coverage/HASHTAG$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1642329581739" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+>>>>>>> suppper
     <SUITE FILE_PATH="coverage/HASHTAG$HASHTAG.coverage" NAME="HASHTAG Coverage Results" MODIFIED="1641969948453" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

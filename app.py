@@ -6,6 +6,7 @@ from pymongo import MongoClient
 client = MongoClient('localhost', 27017)
 db = client.dbmakingchallenge
 
+
 #유저 리스트
 # users = list(db.user.find({},{'_id':False}))
 
@@ -66,6 +67,15 @@ def signup():
     }
     # db.user.insert_one(user)
     return jsonify({'signUp': '1'})
+
+#검색어 저장
+@app.route('/', methods=['POST'])
+def search_post():
+    search_word_receive = request.form['searchWord_give']
+    doc = {
+        'search': search_word_receive
+    }
+    db.searchword.insert_one(doc)
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
