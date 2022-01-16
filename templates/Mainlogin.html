@@ -19,20 +19,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-    <script type="text/javascript">
-            function makeSearch() {
-                let search = $('#searchValue').val()
-                $.ajax({
-                    type: "POST",
-                    url: "/search",
-                    data: { searchWord_give: search},
-                    success: function (response) {
-                        alert(response["msg"]);
-                        window.location.reload();
-                    }
-                })
-            }
-    </script>
+    <script defer src="../static/js/search.js"></script>
     <title>하루살이</title>
 
 <!--box로 이름이 끝나는 클래스는 디자인 요소입니다. 데이터 연결 및 수정하지 마세요.-->

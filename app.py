@@ -64,7 +64,7 @@ def signup():
     return jsonify({'signUp': '1'})
 
 #검색어 저장
-@app.route('/search', methods=['POST'])
+@app.route('/', methods=['POST'])
 def search_post():
     search_word_receive = request.form['searchWord_give']
     doc = {
