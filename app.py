@@ -71,8 +71,6 @@ def search_post():
         'search': search_word_receive
     }
     db.searchword.insert_one(doc)
-    return jsonify({'msg' : '검색어가 저장되었습니다.'})
-
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
