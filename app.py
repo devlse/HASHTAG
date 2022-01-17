@@ -1,6 +1,9 @@
-import bcrypt
 from flask import Flask, render_template, jsonify, request
-from JWT_SECRET_KEY import secret
+from datetime import datetime, timedelta
+import bcrypt
+import jwt
+from JWT_info import *
+
 app = Flask(__name__)
 
 from pymongo import MongoClient
@@ -22,7 +25,7 @@ def mainPage2():
 #로그인페이지
 @app.route('/login')
 def signInPage():
-    return render_template('Login.html')
+    return render_template('test.html')
 
 #회원가입페이지
 @app.route('/signup')
@@ -44,8 +47,13 @@ def signin():
         if id_receive == target['id']:
             check_password = target['pw'].encode('utf-8')
             if bcrypt.checkpw(pw_receive.encode('utf-8'), check_password):
-                print('return')
-                return jsonify({'signIn': '1'})
+                payload={
+                    'user_id':id_receive,
+                    'exp':datetime.today() + timedelta(minutes=10)
+                    # 'exp': datetime.utcnow() + timedelta(minutes=10)
+                }
+                access_token = jwt.encode(payload, secret, algorithm)
+                return jsonify({'signIn': '1', 'Authorization': access_token})
     return jsonify({'msg': '아이디/비밀번호가 틀립니다'})
 
 #회원가입버튼

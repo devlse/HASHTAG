@@ -139,4 +139,5 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,pycharm
 .idea/
-/JWT_SECRET_KEY.py
+/JWT_info.py
+templates/test.html
