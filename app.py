@@ -9,7 +9,7 @@ db = client.dbmakingchallenge
 
 
 #유저 리스트
-# users = list(db.user.find({},{'_id':False}))
+users = list(db.user.find({},{'_id':False}))
 
 #메인페이지
 @app.route('/')
@@ -40,11 +40,13 @@ def mywordPage():
 def signin():
     id_receive = request.form['id_give']
     pw_receive = request.form['pw_give']
-    # DB에서 아이디 비교
-    if db.user.find_one({'id':id_receive},{'_id':False}):
-        # 일치하면 패스워드 비교
-        if db.user.find_one({'pw': pw_receive}, {'_id': False}):
-            return jsonify({'signIn': '1'})
+
+    for target in users:
+        if id_receive == target['id']:
+            check_password = target['pw'].encode('utf-8')
+            if bcrypt.checkpw(pw_receive.encode('utf-8'), check_password):
+                print('return')
+                return jsonify({'signIn': '1'})
     return jsonify({'msg': '아이디/비밀번호가 틀립니다'})
 
 #회원가입버튼
@@ -61,13 +63,16 @@ def signup():
     # 패스워드값 공백 검사
     elif pw_receive == "":
         return ({'msg': '비밀번호를 입력해주세요'})
-    hashed_password = bcrypt.hashpw(pw_receive.encode('utf-8'), bcrypt.gensalt())
-    print(type(hashed_password))
+    #비밀번호 해싱
+    encode_password = bcrypt.hashpw(pw_receive.encode('utf-8'), bcrypt.gensalt())
+    #해싱값 str변환 -> DB저장
+    hashed_password = encode_password.decode('utf-8')
+
     user ={
         'id':id_receive,
-        'pw':pw_receive,
+        'pw':hashed_password,
     }
-    # db.user.insert_one(user)
+    db.user.insert_one(user)
     return jsonify({'signUp': '1'})
 
 #검색어 저장
