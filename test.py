@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify, render_template
 # JWT 확장 라이브러리 임포트하기
+from flask_jwt_extended import *
 
 app = Flask(__name__)
 

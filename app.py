@@ -1,3 +1,4 @@
+import bcrypt
 from flask import Flask, render_template, jsonify, request
 
 app = Flask(__name__)
@@ -60,7 +61,8 @@ def signup():
     # 패스워드값 공백 검사
     elif pw_receive == "":
         return ({'msg': '비밀번호를 입력해주세요'})
-
+    hashed_password = bcrypt.hashpw(pw_receive.encode('utf-8'), bcrypt.gensalt())
+    print(type(hashed_password))
     user ={
         'id':id_receive,
         'pw':pw_receive,
