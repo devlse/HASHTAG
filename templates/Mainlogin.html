@@ -156,7 +156,7 @@
                 <input class="form-control form-control-lg" type="text" placeholder="search" style="border: none; background: rgba(255, 255, 255, 0.5);" id = "searchValue">
             </div>
             <div class="recentbox">
-                <div class="list-group">
+                <div class="list-group" id="recentsearch">
 <!--최근에 검색한 값 3개까지만 불러오고 각각 누르면 해당 값 검색 페이지로 이동함 -->
                     <a href="#" class="list-group-item list-group-item-action" style="border: none"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#6667AB" class="bi bi-clock" viewBox="0 0 16 16">
                         <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
@@ -176,7 +176,7 @@
         </div>
         <div class="todaybox">
 <!--많이 검색한 값 7개 불러오고 각각 누르면 해당 값 검색 페이지로 이동함-->
-            <table class='table'>
+            <table class='table' id="ranking">
                 <tr>
                     <th class="rankbox" scope="row" style="border-top:none;color:#6667AB;width:16.66%;text-align:center;">1</th>
                     <td style="border-top:none;"><a href="#" class="link" style="text-decoration:none;text-align: center;"}>하루</td>
