@@ -22,7 +22,7 @@
             let pw = $('#pw').val()
             $.ajax({
                 type: "POST",
-                url: "/signup/up",
+                url: "/signup",
                 data: {
                     id_give: id,
                     pw_give: pw
@@ -30,7 +30,7 @@
                 success: function (response) {
                     if (response.signUp == '1') {
                         alert('가입되었습니다!')
-                        window.location.href = '/login'
+                        window.location.href = '/login-page'
                     } else {
                         alert(response['msg'])
                         window.location.reload();
