@@ -21,6 +21,10 @@
     </script>
 
     <script>
+        function $(document).ready(function () {
+            showrecent();
+        });
+
         function gotologin() {
             window.location.href = "/login"
         }
@@ -28,6 +32,43 @@
         function gotosignup() {
             window.location.href = "/signup"
         }
+
+        function search() {
+            // 화면에 입력어 가져옴
+            let search = $("#search").val();
+
+            // POST /에 저장을 요청
+            $.ajax({
+                type: "POST",
+                url: "/",
+                data: {searchWord_give: search},
+                success: function (response) {
+                    alert(response["msg"]);
+                    window.location.reload();
+                }
+            })
+        }
+
+        function showrecent() {
+                $.ajax({
+                    type: "GET",
+                    url: "/",
+                    data: {},
+                    success: function (response) {
+                        let searchwords = response['all_searchwords']
+                        for (let i = 0; i < 4; i++) {
+                            let search = searchwords[i]['search']
+
+                            let temp_html = `<a href="#" class="list-group-item list-group-item-action" style="border: none">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#6667AB" class="bi bi-clock"
+                            viewBox="0 0 16 16"><path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
+                            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
+                        </svg>&nbsp;&nbsp;&nbsp;${search}</a>`
+                            $('#recentsearch').append(temp_html)
+                        }
+                    }
+                })
+            }
     </script>
 
     <script defer src="../static/js/search.js"></script>
@@ -170,19 +211,17 @@
                     </svg></button>
             </div>
             <div class="input">
-                <input class="form-control form-control-lg" type="text" placeholder="search"
-                    style="border: none; background: rgba(255, 255, 255, 0.5);" id="searchValue">
+                <input id="search" class="form-control form-control-lg" type="text" placeholder="search"
+                    style="border: none; background: rgba(255, 255, 255, 0.5);" >
             </div>
             <div class="recentbox">
                 <!--최근 검색어 3개-->
+                <!--검색어 앞에 띄어쓰기 코드 (&nbsp;&nbsp;&nbsp;)-->
                 <div class="list-group" id="recentsearch">
-                    <a href="#" class="list-group-item list-group-item-action" style="border: none"><svg
-                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#6667AB" class="bi bi-clock"
-                            viewBox="0 0 16 16">
-                            <path
-                                d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
+                    <a href="#" class="list-group-item list-group-item-action" style="border: none">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#6667AB" class="bi bi-clock"
+                            viewBox="0 0 16 16"><path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
                             <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
-                    <!--검색어 앞에 띄어쓰기 코드 (&nbsp;&nbsp;&nbsp;)-->
                         </svg>&nbsp;&nbsp;&nbsp;최근 검색어1</a>
                     <a href="#" class="list-group-item list-group-item-action" style="border: none"><svg
                             xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#6667AB" class="bi bi-clock"
