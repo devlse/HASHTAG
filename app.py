@@ -1,12 +1,11 @@
 import bcrypt
 from flask import Flask, render_template, jsonify, request
-
+from JWT_SECRET_KEY import secret
 app = Flask(__name__)
 
 from pymongo import MongoClient
 client = MongoClient('localhost', 27017)
 db = client.dbmakingchallenge
-
 
 #유저 리스트
 users = list(db.user.find({},{'_id':False}))
