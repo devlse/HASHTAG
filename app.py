@@ -15,27 +15,27 @@ db = client.dbmakingchallenge
 def mainPage():
     return render_template('Mainlogout.html')
 
-@app.route('/main')
+@app.route('/main-page')
 def mainPage2():
     return render_template('Mainlogin.html')
 
 #로그인페이지
-@app.route('/login')
+@app.route('/login-page')
 def signInPage():
     return render_template('Login.html')
 
 #회원가입페이지
-@app.route('/signup')
+@app.route('/signup-page')
 def signUpPage():
     return render_template('Account.html')
 
 #관심단어 등록 페이지
-@app.route('/myword')
+@app.route('/myword-page')
 def mywordPage():
     return render_template('record_list.html')
 
 #로그인버튼
-@app.route('/login/in', methods=['POST'])
+@app.route('/login', methods=['POST'])
 def signin():
     id_receive = request.form['id_give']
     pw_receive = request.form['pw_give']
@@ -47,7 +47,7 @@ def signin():
     return jsonify({'msg': '아이디/비밀번호가 틀립니다'})
 
 #회원가입버튼
-@app.route('/signup/up', methods=['POST'])
+@app.route('/signup', methods=['POST'])
 def signup():
     id_receive = request.form['id_give']
     pw_receive = request.form['pw_give']
