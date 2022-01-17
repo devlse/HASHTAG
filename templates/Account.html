@@ -37,6 +37,12 @@
                 }
             })
         }
+
+        function enterkey() {
+            if (window.event.keyCode == 13) {
+                account();
+            }
+        }
     </script>
     <title>회원가입</title>
 </head>
@@ -45,14 +51,14 @@
     <div class="glassmorphism">
         <div class="login-box">
             <div class="login-title text-center">Create Account</div>
-            <div class="id-pw-box">
+            <form action="" onkeyup="enterkey()">
                 <div>ID</div>
                 <input type="text" class="input-button" id="id" placeholder="Input your ID">
                 <div>Password</div>
                 <input type="password" class="input-button" id="pw" placeholder="Input your Password">
                 </br>
                 <input type="button" onclick="account()" value="Sign up" class="login-button">
-            </div>
+            </form>
         </div>
     </div>
 </body>
