@@ -14,7 +14,7 @@ client = MongoClient('localhost', 27017)
 db = client.dbmakingchallenge
 
 
-#유저 리스트
+#DB속 유저 리스트
 users = list(db.user.find({},{'_id':False}))
 
 #유저 jwt 체크 데코레이터
