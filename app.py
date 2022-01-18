@@ -38,8 +38,9 @@ def mainPage():
     return render_template('Mainlogout.html')
 
 @app.route('/main-page')
-def mainPage2():
-    return render_template('Mainlogin.html')
+@check
+def mainPage2(args):
+    return render_template('Mainlogin.html', name=args)
 
 #로그인페이지
 @app.route('/login-page')
@@ -58,7 +59,6 @@ def mywordPage():
 
 #로그인버튼
 @app.route('/login', methods=['POST'])
-@check
 def login():
     id_receive = request.form['id_give']
     pw_receive = request.form['pw_give']
