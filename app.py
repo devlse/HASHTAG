@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from pytz import timezone
 import bcrypt
 import jwt
-from JWT_info import *
+from JWT_info import secret, algorithm, MIN
 today = datetime.now(timezone('Asia/Seoul'))
 
 
@@ -15,6 +15,21 @@ db = client.dbmakingchallenge
 
 #유저 리스트
 users = list(db.user.find({},{'_id':False}))
+
+#유저 jwt 체크 데코레이터
+@app.route('/check-token')
+def check(func):
+    def check_Token():
+        cookie = request.cookies.get('Authorization')
+        # cookie = request.headers['Authorization'] client -> server 헤더로 쿠키값을 싫어서 보낸다.
+        try:
+            jwt.decode(cookie, secret, algorithm)
+            return func()
+        except jwt.ExpiredSignatureError:
+            return jsonify({'msg':'로그인 시간이 만료되었습니다.'})
+        except jwt.exceptions.DecodeError:
+            return jsonify({'msg': "로그인 정보가 존재하지 않습니다."})
+    return check_Token
 
 #메인페이지
 @app.route('/')
@@ -62,19 +77,6 @@ def login():
                 # 유저 아이디 값
                 return jsonify({'signIn': '1', 'Authorization': access_token})
     return jsonify({'msg': '아이디/비밀번호가 틀립니다'})
-
-@app.route('/logout')
-def logout():
-    cookie = request.cookies.get('Authorization')
-    # cookie = request.headers['Authorization'] 헤더로 쿠키값을 싫어서 보낸다.
-    try:
-        jwt.decode(cookie, secret, algorithm)
-        print(cookie)
-        return jsonify({'msg':'ok'})
-    except jwt.ExpiredSignatureError:
-        return jsonify({'msg':'로그인 시간이 만료되었습니다.'})
-    except jwt.exceptions.DecodeError:
-        return ({'msg': "로그인 정보가 존재하지 않습니다."})
 
 #회원가입버튼
 @app.route('/signup', methods=['POST'])
