@@ -18,7 +18,6 @@ db = client.dbmakingchallenge
 users = list(db.user.find({},{'_id':False}))
 
 #유저 jwt 체크 데코레이터
-@app.route('/check-token')
 def check(func):
     def check_Token():
         cookie = request.cookies.get('Authorization')
