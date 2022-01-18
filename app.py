@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from pytz import timezone
 import bcrypt
 import jwt
-from JWT_info import secret, algorithm, MIN
+from JWT_info import * #*자리에 secret, algorithm, MIN로 되어있었는데 이러니까 제 컴퓨터에선 오류가 나더라구요 그래서 일단 주석처리합니다
 today = datetime.now(timezone('Asia/Seoul'))
 
 
