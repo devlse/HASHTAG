@@ -59,6 +59,7 @@ def mywordPage():
 
 #로그인버튼
 @app.route('/login', methods=['POST'])
+@check
 def login():
     id_receive = request.form['id_give']
     pw_receive = request.form['pw_give']
