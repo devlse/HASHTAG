@@ -23,6 +23,7 @@ def check(func):
         cookie = request.cookies.get('Authorization')
         # cookie = request.headers['Authorization'] client -> server 헤더로 쿠키값을 싫어서 보낸다.
         try:
+            #유저 아이디값 불러와서 인자로 넣어주기!
             user_id = jwt.decode(cookie, secret, algorithm)['user_id']
             return func(user_id)
         except jwt.ExpiredSignatureError:
