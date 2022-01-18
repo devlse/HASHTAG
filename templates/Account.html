@@ -15,13 +15,14 @@
     <!-- ajax -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- script -->
+    <script src="/static/js/cookie.js"></script>
     <script>
         function account() {
             let id = $('#id').val()
             let pw = $('#pw').val()
             $.ajax({
                 type: "POST",
-                url: "/signup/up",
+                url: "/signup",
                 data: {
                     id_give: id,
                     pw_give: pw
@@ -29,13 +30,19 @@
                 success: function (response) {
                     if (response.signUp == '1') {
                         alert('가입되었습니다!')
-                        window.location.href = '/login'
+                        window.location.href = '/login-page'
                     } else {
                         alert(response['msg'])
                         window.location.reload();
                     }
                 }
             })
+        }
+
+        function enterkey() {
+            if (window.event.keyCode == 13) {
+                account();
+            }
         }
     </script>
     <title>회원가입</title>
@@ -45,14 +52,14 @@
     <div class="glassmorphism">
         <div class="login-box">
             <div class="login-title text-center">Create Account</div>
-            <div class="id-pw-box">
+            <form action="" onkeyup="enterkey()">
                 <div>ID</div>
                 <input type="text" class="input-button" id="id" placeholder="Input your ID">
                 <div>Password</div>
                 <input type="password" class="input-button" id="pw" placeholder="Input your Password">
                 </br>
                 <input type="button" onclick="account()" value="Sign up" class="login-button">
-            </div>
+            </form>
         </div>
     </div>
 </body>

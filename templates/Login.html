@@ -21,7 +21,7 @@
             let pw = $('#pw').val()
             $.ajax({
                 type: "POST",
-                url: "/login/in",
+                url: "/login",
                 data: {
                     id_give: id,
                     pw_give: pw
@@ -29,13 +29,19 @@
                 success: function (response) {
                     if (response.signIn == '1') {
                         alert('로그인 성공');
-                        window.location.href = '/main'
+                        window.location.href = '/main-page'
                     } else {
                         alert(response['msg'])
                         window.location.reload();
                     }
                 }
             })
+        }
+
+        function enterkey() {
+            if (window.event.keyCode == 13) {
+                login();
+            }
         }
     </script>
     <title>로그인</title>
@@ -45,14 +51,14 @@
     <div class="glassmorphism">
         <div class="login-box">
             <div class="login-title text-center">LOGIN</div>
-            <div class="id-pw-box">
+            <form action="" onkeyup="enterkey()">
                 <div>ID</div>
                 <input type="text" class="input-button" id="id" placeholder=" ">
                 <div>Password</div>
                 <input type="password" class="input-button" id="pw" placeholder=" ">
                 </br>
                 <input type="button" onclick="login()" value="Login" class="login-button">
-            </div>
+            </form>
             <div class="text-center">Don't have an account? <a href="/signup">Sign up</a> </div>
         </div>
     </div>

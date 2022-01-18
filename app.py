@@ -13,6 +13,7 @@ from pymongo import MongoClient
 client = MongoClient('localhost', 27017)
 db = client.dbmakingchallenge
 
+
 #유저 리스트
 users = list(db.user.find({},{'_id':False}))
 
@@ -36,14 +37,14 @@ def check(func):
 def mainPage():
     return render_template('Mainlogout.html')
 
-@app.route('/main')
+@app.route('/main-page')
 def mainPage2():
     return render_template('Mainlogin.html')
 
 #로그인페이지
 @app.route('/login-page')
-def login_Page():
-    return render_template('test.html')
+def login_page():
+    return render_template('Login.html')
 
 #회원가입페이지
 @app.route('/signup-page')
@@ -51,7 +52,7 @@ def signup_Page():
     return render_template('Account.html')
 
 #관심단어 등록 페이지
-@app.route('/myword')
+@app.route('/myword-page')
 def mywordPage():
     return render_template('record_list.html')
 
