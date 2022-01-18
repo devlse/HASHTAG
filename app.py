@@ -23,10 +23,8 @@ def check(func):
         cookie = request.cookies.get('Authorization')
         # cookie = request.headers['Authorization'] client -> server 헤더로 쿠키값을 싫어서 보낸다.
         try:
-            a = jwt.decode(cookie, secret, algorithm)
-            print(a)
-
-            return func()
+            user_id = jwt.decode(cookie, secret, algorithm)['user_id']
+            return func(user_id)
         except jwt.ExpiredSignatureError:
             return jsonify({'msg':'로그인 시간이 만료되었습니다.'})
         except jwt.exceptions.DecodeError:
