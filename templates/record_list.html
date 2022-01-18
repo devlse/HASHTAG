@@ -52,47 +52,104 @@
     <script>
         let globalVariable;
         $(document).ready(function () {
-            //showArticles();
+            showRecords();
         });
-        /*저쪽에서 저장한 해시태그를 현재 시간 값을 클래스나 아이디 값으로 정하자~해시태그 값을 받아와야 한다*/
+        //저장한 단어들 보여주기
+        function showRecords() {
+            $.ajax({
+                type: "GET",
+                url: "/searchlist",
+                data: {},
+                success: function (response) {
+                    let record = response['all_searchs']
+                    for(let i = 0; i < record.length; i++){
+                        let list = record[i]['myword']
+                        let id_setting = record[i]['saving-num']
+                        let temp_html = `<div id="${id_setting}" onclick="listOpen(this.id)" style='cursor:pointer'>${list}</div>`
+                        $('.hashtag').append(temp_html)
+                    }
+
+                }
+            })
+        }
+
+        //관심 등록한 단어를 누르면 크롤링 정보, 메모 등 내용이 보인다
         function listOpen(e) {
             if ($("#saved-record").css("display") == "block") {
                 $("#saved-record").hide();
+                $('#saved-record-list').empty();
             } else {
                 $("#saved-record").show();
+                globalVariable = e;//id 값 가져오기
+                openedList(e);
             }
+        }
+        function openedList(event){
+            $.ajax({
+                type: "POST",
+                url: "/searchitem",
+                data: { savenum_give: event },
+                success: function (response) {
+                    let items = response['items']
+                    let myword = items[0]['myword']
+                    let memo = items[0]['memo']
+                    let keyword = items[0]['keyword']
+                    let link = items[0]['link']
+                    let font_style ='font-weight: bold; font-style: italic; font-size: 1.2em;'
+                    console.log(items, myword, memo, keyword, link)
 
-            //id 값 가져오기
-            alert(e);
-            globalVariable = e;
-
-            //id값 만들기
-            const now = new Date();
-            const year = now.getFullYear();
-            const month = ("0" + (1 + now.getMonth())).slice(-2);
-            const day = ("0" + now.getDate()).slice(-2);
-            const hours = ('0' + now.getHours()).slice(-2);
-            const minutes = ('0' + now.getMinutes()).slice(-2);
-            const seconds = ('0' + now.getSeconds()).slice(-2);
-            const newid = year + month + day + hours + minutes + seconds;
-            const z = toString(newid);
-            console.log(z);
+                    let temp_html = `<div class="form-group">
+                                        <hr>
+                                        <label for="area-crawling" style="${font_style}">검색단어</label>
+                                        <div id="area-crawling">${myword}<br>((사실은 크롤링 결과 넣을 자리))</div>
+                                    </div>
+                                    <hr>
+                                    <div class="form-group">
+                                        <label for="area-memo" style="${font_style}">메모</label>
+                                        <div id="area-memo">${memo}</div>
+                                    </div>
+                                    <hr>
+                                    <div class="form-group">
+                                        <label for="area-keyword" style="${font_style}">중요키워드</label>
+                                        <div id="area-keyword">${keyword}</div>
+                                    </div>
+                                    <hr>
+                                    <div class="form-group">
+                                        <label for="area-link" style="${font_style}">링크</label>
+                                        <div id="area-link">${link}</div>
+                                    </div>
+                                    <hr>`
+                    $('#saved-record-list').append(temp_html)
+                }
+            })
         }
 
-        function deleteBtn() {
-            //지우는거 + DB안에 저장된 내용도 지워야한다**
-            const id = globalVariable;
-            const div = document.getElementById(id);
+        //관심기록 해제 = 내용 지우는 button
+        function deleteBtn(){
+            //지우는거 + DB안에 저장된 내용도 지워짐
+            const search_id = globalVariable;
+            const div = document.getElementById(search_id);
 
             $("#saved-record").hide();
             if (confirm("삭제하시겠습니까?")) {
                 alert('삭제되었습니다');
                 div.remove();
-            } else {
-                //alert("놉");
-                $("#saved-record").show();
+                deleteContents(); //실행이 잘 되는건 별개로 오류가 나는데 왜 나는지 모르겠다**
             }
-            //window.location.reload();
+            else { $("#saved-record").show(); }
+        }
+        //지우는거 + DB안에 저장된 내용도 지운다
+        function deleteContents() {
+            const searched_id = globalVariable;
+            $.ajax({
+                type: "POST",
+                url: "/delete-item",
+                data: { saved_num: searched_id },
+                success: function (response) {
+                    //let rm = response['remaining_items']
+                    //console.log(rm)
+                }
+            })
         }
     </script>
 
@@ -105,12 +162,15 @@
         <nav class="navbar">
             <div class="navbar__logo">
                 <!--메인화면으로 링크넣기!-->
-                <a href="#"><img src="../static/image/youtube.png">Title</a>
+                <a href="/">하 루 살 이</a>
             </div>
             <ul class="navbar__list">
-                <li><a href="#">LogOut</a></li>
-                <!--로그인/아웃 구현은 나중에. 어려우면 빼고-->
-                <li><a href="Result.html">다시 검색하기(메인화면 링크)</a></li>
+                <li><form action="#"><!--로그아웃용-->
+                        <button type="submit" class="btn btn-styling btn-event">Logout</button>
+                </form></li>
+                <li><form action="/"><!--메인 화면으로 넘기기-->
+                        <button type="submit" class="btn btn-styling btn-event">다시 검색하기=메인화면으로</button>
+                </form></li>
             </ul>
         </nav>
 
@@ -126,26 +186,9 @@
         </div>
 
         <div id="saved-record" class="form-post" style="display: none">
-            <div>
-                <div class="form-group">
-                    <label for="area-crawling">결과?</label>
-                    <textarea class="form-control" id="area-crawling" rows="3" placeholder="크롤링 결과들 보여주기"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="area-memo">메모</label>
-                    <textarea class="form-control" id="area-memo" rows="3" placeholder="메모를 입력해보세요"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="area-keyword">중요키워드</label>
-                    <input type="email" class="form-control" id="area-keyword" placeholder="키워드를 입력해보세요">
-                </div>
-                <div class="form-group">
-                    <label for="area-link">링크</label>
-                    <input type="url" class="form-control" id="area-link" placeholder="링크남기기">
-                </div>
-                <!--질문**div에서 아이디 어케 가져와?-->
-                <button type="button" class="btn btn-primary" onclick="deleteBtn()">삭제버튼이다!</button>
-            </div>
+            <div id="saved-record-list"><!--디비에서 불러온 내용을 담을 공간--></div>
+            <button type="button" class="btn btn-styling" onclick="deleteBtn()" style="margin-top: 16px;">삭제버튼이다!
+            </button>
         </div>
 
     </div>

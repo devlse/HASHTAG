@@ -34,6 +34,10 @@ def check(func):
     check_Token.__name__ = func.__name__
     return check_Token
 
+
+#####
+
+
 #메인페이지
 @app.route('/')
 def mainPage():
@@ -55,10 +59,23 @@ def login_page():
 def signup_Page():
     return render_template('Account.html')
 
+#검색결과 보여주는 페이지
+@app.route('/searched-result')
+def resultPage():
+    return render_template('Result.html')
+
 #관심단어 등록 페이지
 @app.route('/myword-page')
 def mywordPage():
     return render_template('record_list.html')
+
+#임시 메인 페이지
+@app.route('/temporary-main-page')
+def temporaryMainPage():
+    return render_template('testpage.html')
+
+###
+
 
 #로그인버튼
 @app.route('/login', methods=['POST'])
@@ -117,6 +134,7 @@ def search_post():
         'search': search_word_receive
     }
     db.searchword.insert_one(doc)
+    return jsonify({'msg': '결과 보러가기'})
 
 @app.route('/search', methods=['GET'])
 def searchaaa():
@@ -124,7 +142,7 @@ def searchaaa():
     return jsonify({'search_word': word})
 
 #검색어와 메모 저장
-@app.route('/result', methods=['POST'])
+@app.route('/result-save', methods=['POST'])
 def saving_memo():
     myword_receive = request.form['myword_give'] #검색한 단어
     num_receive = request.form['num_give'] #아이디값 저장
@@ -142,6 +160,25 @@ def saving_memo():
     db.onedaylive.insert_one(doc)
     return jsonify({'msg' : '검색어가 저장되었습니다.'}) #검색어 보여주기
 
+#저장된 단어들 보여줌
+@app.route('/searchlist', methods=['GET'])
+def record():
+    searchs = list(db.onedaylive.find({}, {'_id': False}))
+    return jsonify({'all_searchs': searchs})
+
+#저장된 결과들 보여줌 = 특정 한 단어에 대한 결과-메모,키워드,링크 만 보여줌
+@app.route('/searchitem', methods=['POST']) #search에서 searchlist로 바꿈
+def show_item():
+    savenum_receive = request.form['savenum_give']
+    items = list(db.onedaylive.find({'saving-num': savenum_receive}, {'_id': False}))
+    return jsonify({'items': items})
+
+#저장된 내용 지우기
+@app.route('/delete-item', methods=['POST'])
+def delete_one():
+    saved_num = request.form['saved_num']
+    remaining = list(db.onedaylive.delete_one({'saving-num': saved_num})) #여기가 문젠데 왜 오류나는지 모르겠다
+    return jsonify({'remaining_items': remaining})
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)

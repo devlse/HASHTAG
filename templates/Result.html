@@ -109,7 +109,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "/result",
+                url: "/result-save",
                 data: {
                     myword_give: myword,
                     num_give: numid,
@@ -179,7 +179,7 @@
                     <label for="area-link">링크남기기</label>
                     <input class="form-control" id="area-link" placeholder="링크남기기">
                 </div>
-                <form action="/record"><button type="submit" class="btn btn-styling" onclick="memoSave()">
+                <form action="/myword-page"><button type="submit" class="btn btn-styling" onclick="memoSave()">
                     저장하기</button></form>
             </div>
         </div>

@@ -9,6 +9,16 @@ a:hover{
   text-decoration: none;
   color: white;
 }
+
+.btn-styling{
+  background-color: #6667ab;
+  color: white;
+}
+.btn-event:hover {
+    box-shadow: 200px 0 0 0 rgba(154, 155, 217, 0.75) inset,
+              -200px 0 0 0 rgba(154, 155, 217, 0.25) inset;
+}
+
 /*상단*/
 .navbar{
   display: flex;
