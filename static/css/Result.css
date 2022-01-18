@@ -43,15 +43,18 @@ a:hover{
   padding: 8px 12px;
 }
 .navbar__list li:hover{
-  background-color: blanchedalmond;
   border-radius: 4px;
+  color: ghostwhite;
 }
 
 /*main*/
 .hashtag {
   padding: 30px 100px;
   margin: auto;
-  background: aquamarine;
+  background: rgba(171, 120, 255, 0.25);
+  /*가운데 정렬!!!*/
+  width: 100%;
+  text-align: center;
 }
 .hashtag div{
   background: chartreuse;
