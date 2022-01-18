@@ -23,6 +23,7 @@ def check(func):
         cookie = request.cookies.get('Authorization')
         # cookie = request.headers['Authorization'] client -> server 헤더로 쿠키값을 싫어서 보낸다.
         try:
+            print('{}'.format(func.__name__))
             #유저 아이디값 불러와서 인자로 넣어주기!
             user_id = jwt.decode(cookie, secret, algorithm)['user_id']
             return func(user_id)
@@ -30,6 +31,7 @@ def check(func):
             return jsonify({'msg':'로그인 시간이 만료되었습니다.'})
         except jwt.exceptions.DecodeError:
             return jsonify({'msg': "로그인 정보가 존재하지 않습니다."})
+    check_Token.__name__ = func.__name__
     return check_Token
 
 #메인페이지
@@ -37,10 +39,11 @@ def check(func):
 def mainPage():
     return render_template('Mainlogout.html')
 
+
 @app.route('/main-page')
 @check
-def mainPage2(args):
-    return render_template('Mainlogin.html', name=args)
+def mainPage2(user_id):
+    return render_template('Mainlogin.html', name=user_id)
 
 #로그인페이지
 @app.route('/login-page')
