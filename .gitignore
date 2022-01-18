@@ -140,4 +140,5 @@ $RECYCLE.BIN/
 # End of https://www.toptal.com/developers/gitignore/api/windows,pycharm
 .idea/
 /JWT_info.py
+static/js/test.js
 templates/test.html
