@@ -37,7 +37,7 @@
         }
 
         #post-box {
-            background: blanchedalmond;
+            background: rgba(171, 120, 255, 0.25);
             width: 500px;
             margin: 20px auto;
             padding: 50px;
@@ -51,10 +51,14 @@
         }
     </style>
     <script>
+        let globalVariable;
+        let saveSearchedWord;
+
         $(document).ready(function () {
-            showArticles();
+            searchword();
         });
 
+        //저장 버튼 = 여닫기 기능
         function saveBtn() {
             if ($("#post-box").css("display") == "block") {
                 $("#post-box").hide();
@@ -63,60 +67,67 @@
             }
         }
 
-        function postList() { //버튼클릭 ~ 크롤링 결과도 받아와야됨
-            let url = $('#post-url').val()
-            let comment = $('#post-comment').val()
+        /////////
+
+        //마지막 값=가장 최근에 검색한 단어 불러오기
+        function searchword() {
+            $.ajax({
+                type: "GET",
+                url: "/search",
+                data: {},
+                success: function (response) {
+                    let words = response['search_word'];
+                    //console.log(words)
+                    let searched = words[words.length - 1]['search']
+                    //console.log(searched)
+
+                    saveSearchedWord = searched;
+
+                    //id값 만들기
+                    const now = new Date();
+                    const year = now.getFullYear();
+                    const month = ("0" + (1 + now.getMonth())).slice(-2);
+                    const day = ("0" + now.getDate()).slice(-2);
+                    const hours = ('0' + now.getHours()).slice(-2);
+                    const minutes = ('0' + now.getMinutes()).slice(-2);
+                    const seconds = ('0' + now.getSeconds()).slice(-2);
+                    globalVariable = year + hours + day + seconds + minutes + month;
+
+                    let temp_html = `<h1><span id="${globalVariable}">${searched}</span>(으)로 검색한 결과입니다</h1>`
+                    $('#my-searched-result').append(temp_html)
+                }
+            })
+        }
+
+        //크롤링 결과도 저장해야됨~메모 저장용
+        function memoSave() {
+            let myword = saveSearchedWord //내가 검색한 단어
+            let numid = globalVariable //저장한 단어의 id값
+            let memo = $('#area-memo').val()
+            let keyword = $('#area-keyword').val()
+            let link = $('#area-link').val()
 
             $.ajax({
                 type: "POST",
-                url: "/memo",
+                url: "/result",
                 data: {
-                    url_give: url,
-                    comment_give: comment
+                    myword_give: myword,
+                    num_give: numid,
+                    memo_give: memo,
+                    keyword_give: keyword,
+                    link_give: link
                 },
-                success: function (response) { // 성공하면
-                    alert(response["msg"]);
-                    window.location.reload() //안에 값이 없으면 경고띄우기
-                }
-            })
-
-            alert('저장이 완료되었습니다!');
-            window.location.href = 'record_list.html' /*버튼 클릭시 페이지 이동*/
-        }
-
-        //입력받아와서 보여줘야됨 - 아직 미완
-        function showArticles() {
-            $.ajax({
-                type: "GET",
-                url: "/memo",
-                data: {},
                 success: function (response) {
-                    let articles = response['all_articles']
-                    for (let i = 0; i < articles.length; i++) {
-                        let title = articles[i]['title']
-                        let image = articles[i]['image']
-                        let url = articles[i]['url']
-                        let desc = articles[i]['desc']
-                        let comment = articles[i]['comment']
-
-                        let temp_html = `<div class="card">
-                                                 <img class="card-img-top"
-                                                      src="${image}"
-                                                      alt="Card image cap">
-                                                 <div class="card-body">
-                                                     <a target="_blank" href="${url}" class="card-title">${title}</a>
-                                                     <p class="card-text">${desc}</p>
-                                                     <p class="card-text comment">${comment}</p>
-                                                 </div>
-                                              </div>`
-                        $('#cards-box').append(temp_html)
-                        //$('.hashtag').append(temp_html) 아이디를 여기서 먼저 주고 뒤로 어떻게 넘기지
-
-
+                    if (memo == '') {//메모를 안 남겼을 때
+                        alert('메모를 남겨주세요!');
+                        window.location.reload();
+                    } else {
+                        alert(response["msg"]);
                     }
                 }
             })
         }
+
     </script>
 
 </head>
@@ -124,35 +135,33 @@
 <body>
     <div class="wrap">
 
-        <!--상단-->
+       <!--상단-->
         <nav class="navbar">
-            <div class="navbar__logo">
-                <!--메인화면으로 링크넣기!-->
-                <a href="#"><img src="../static/image/youtube.png"> Title</a>
+            <div class="navbar__logo"> <!--메인 화면으로 링크!-->
+                <form action="/"><a type="submit" href="/"> 하 루 살 이 </a></form>
             </div>
             <ul class="navbar__list">
-                <li><a href="#">Login</a></li>
-                <!--로그인/아웃 구현은 나중에. 어려우면 빼고-->
-                <li><a href="record_list.html">저장기록</a></li>
-                <!--로그인 여부 확인하기!-->
+                <!--로그인/아웃 구현은 나중에. 어려우면 빼고--><!--로그인 여부 확인하기!-->
+                <li><form action="#"><!--로그인용-->
+                    <button type="submit" class="btn btn-styling btn-event">Login</button>
+                </form></li>
+                <li><form action="/myword-page"><!--저장 화면으로 넘기기-->
+                    <button type="submit" class="btn btn-styling btn-event">나의 관심기록</button>
+                </form></li>
             </ul>
         </nav>
 
         <!--결과화면-->
         <div class="searching-result" style="padding-top: 20px">
-            <div class="phrases" style="text-align: center;">
-                <h1><span>[검색결과]</span>로 검색한 결과입니다</h1>
-            </div>
+            <div class="phrases" id="my-searched-result" style="text-align: center;">
+                <!--[검색결과]로 검색한 결과입니다--></div>
+            <!--크롤링한 결과들-->
             <div class="hashtag">
-                <!--style="padding: 30px"-->
-                <div>1</div>
-                <div>2</div>
-                <div>3</div>
-                <div>4</div>
-                <div>5</div>
+                <div>example01</div><div>ex02</div><div>eeeeexample03</div>
+                <div>exam04</div><div>examplee05</div>
             </div>
-            <button onclick="saveBtn()" id="savingBtn" type="button" class="btn btn-primary">열리는버튼/저장용
-            </button>
+            <!--저장용 버튼-->
+            <button onclick="saveBtn()" id="savingBtn" type="button" class="btn btn-styling">SAVE</button>
         </div>
 
         <!--저장버튼 누르면 열리는 메모박스-->
@@ -164,17 +173,17 @@
                 </div>
                 <div class="form-group">
                     <label for="area-keyword">중요키워드</label>
-                    <input type="email" class="form-control" id="area-keyword" placeholder="키워드를 입력해보세요">
+                    <input class="form-control" id="area-keyword" placeholder="키워드를 입력해보세요">
                 </div>
                 <div class="form-group">
                     <label for="area-link">링크남기기</label>
-                    <input type="url" class="form-control" id="area-link" placeholder="링크남기기">
+                    <input class="form-control" id="area-link" placeholder="링크남기기">
                 </div>
-                <button type="button" class="btn btn-primary" onclick="postList()">저장/기록으로 넘어간다</button>
+                <form action="/record"><button type="submit" class="btn btn-styling" onclick="memoSave()">
+                    저장하기</button></form>
             </div>
         </div>
 
-        <div id="cards-box" class="card-columns"> </div>
     </div>
 </body>
 
