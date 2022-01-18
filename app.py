@@ -107,13 +107,38 @@ def signup():
     return jsonify({'signUp': '1'})
 
 #검색어 저장
-@app.route('/', methods=['POST'])
+@app.route('/searchword', methods=['POST'])
 def search_post():
     search_word_receive = request.form['searchWord_give']
     doc = {
         'search': search_word_receive
     }
     db.searchword.insert_one(doc)
+
+@app.route('/search', methods=['GET'])
+def searchaaa():
+    word = list(db.searchword.find({}, {'_id': False}))
+    return jsonify({'search_word': word})
+
+#검색어와 메모 저장
+@app.route('/result', methods=['POST'])
+def saving_memo():
+    myword_receive = request.form['myword_give'] #검색한 단어
+    num_receive = request.form['num_give'] #아이디값 저장
+    memo_receive = request.form['memo_give']
+    keyword_receive = request.form['keyword_give']
+    link_receive = request.form['link_give']
+
+    doc = {
+        'myword': myword_receive,
+        'saving-num': num_receive,
+        'memo': memo_receive,
+        'keyword': keyword_receive,
+        'link': link_receive
+    }
+    db.onedaylive.insert_one(doc)
+    return jsonify({'msg' : '검색어가 저장되었습니다.'}) #검색어 보여주기
+
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
