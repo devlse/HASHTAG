@@ -142,3 +142,4 @@ $RECYCLE.BIN/
 /JWT_info.py
 static/js/test.js
 templates/test.html
+__pycache__/
