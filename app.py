@@ -1,4 +1,11 @@
 from flask import Flask, render_template, jsonify, request
+from datetime import datetime, timedelta
+from pytz import timezone
+import bcrypt
+import jwt
+from JWT_info import secret, algorithm, MIN
+today = datetime.now(timezone('Asia/Seoul'))
+
 
 app = Flask(__name__)
 
@@ -8,7 +15,22 @@ db = client.dbmakingchallenge
 
 
 #유저 리스트
-# users = list(db.user.find({},{'_id':False}))
+users = list(db.user.find({},{'_id':False}))
+
+#유저 jwt 체크 데코레이터
+@app.route('/check-token')
+def check(func):
+    def check_Token():
+        cookie = request.cookies.get('Authorization')
+        # cookie = request.headers['Authorization'] client -> server 헤더로 쿠키값을 싫어서 보낸다.
+        try:
+            jwt.decode(cookie, secret, algorithm)
+            return func()
+        except jwt.ExpiredSignatureError:
+            return jsonify({'msg':'로그인 시간이 만료되었습니다.'})
+        except jwt.exceptions.DecodeError:
+            return jsonify({'msg': "로그인 정보가 존재하지 않습니다."})
+    return check_Token
 
 #메인페이지
 @app.route('/')
@@ -21,12 +43,12 @@ def mainPage2():
 
 #로그인페이지
 @app.route('/login-page')
-def signInPage():
+def login_page():
     return render_template('Login.html')
 
 #회원가입페이지
 @app.route('/signup-page')
-def signUpPage():
+def signup_Page():
     return render_template('Account.html')
 
 #관심단어 등록 페이지
@@ -36,14 +58,25 @@ def mywordPage():
 
 #로그인버튼
 @app.route('/login', methods=['POST'])
-def signin():
+def login():
     id_receive = request.form['id_give']
     pw_receive = request.form['pw_give']
-    # DB에서 아이디 비교
-    if db.user.find_one({'id':id_receive},{'_id':False}):
-        # 일치하면 패스워드 비교
-        if db.user.find_one({'pw': pw_receive}, {'_id': False}):
-            return jsonify({'signIn': '1'})
+
+    for target in users:
+        if id_receive == target['user_id']:
+            check_password = target['user_pw'].encode('utf-8')
+            if bcrypt.checkpw(pw_receive.encode('utf-8'), check_password):
+                payload={
+                    'user_id':id_receive,
+                    'exp':datetime.utcnow() + timedelta(minutes=MIN)
+                    # 'exp': datetime.utcnow() + timedelta(minutes=10)
+                }
+                # 토큰인코딩
+                access_token = jwt.encode(payload, secret, algorithm)
+                # 토큰디코딩
+                # check_token = jwt.decode(access_token, secret, algorithm)
+                # 유저 아이디 값
+                return jsonify({'signIn': '1', 'Authorization': access_token})
     return jsonify({'msg': '아이디/비밀번호가 틀립니다'})
 
 #회원가입버튼
@@ -55,17 +88,21 @@ def signup():
     if id_receive == "":
         return({'msg':'아이디를 입력해주세요'})
     # DB에서 중복 아이디 검사
-    elif db.user.find_one({'id':id_receive},{'_id':False}):
+    elif db.user.find_one({'user_id':id_receive},{'_id':False}):
         return jsonify({'msg':'아이디가 있습니다'})
     # 패스워드값 공백 검사
     elif pw_receive == "":
         return ({'msg': '비밀번호를 입력해주세요'})
+    #비밀번호 해싱
+    encode_password = bcrypt.hashpw(pw_receive.encode('utf-8'), bcrypt.gensalt())
+    #해싱값 str변환 -> DB저장
+    hashed_password = encode_password.decode('utf-8')
 
     user ={
-        'id':id_receive,
-        'pw':pw_receive,
+        'user_id':id_receive,
+        'user_pw':hashed_password,
     }
-    # db.user.insert_one(user)
+    db.user.insert_one(user)
     return jsonify({'signUp': '1'})
 
 #검색어 저장
