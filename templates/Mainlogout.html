@@ -33,21 +33,6 @@
             window.location.href = "/signup"
         }
 
-        function search() {
-            // 화면에 입력어 가져옴
-            let search = $("#search").val();
-
-            // POST /에 저장을 요청
-            $.ajax({
-                type: "POST",
-                url: "/",
-                data: {searchWord_give: search},
-                success: function (response) {
-                    alert(response["msg"]);
-                    window.location.reload();
-                }
-            })
-        }
         function showrecent() {
                 $.ajax({
                     type: "GET",
@@ -55,7 +40,7 @@
                     data: {},
                     success: function (response) {
                         let searchwords = response['all_searchwords']
-                        for (let i = 0; i < 4; i++) {
+                        for (let i = 0; i < 3; i++) {
                             let search = searchwords[i]['search']
 
                             let temp_html = `<a href="#" class="list-group-item list-group-item-action" style="border: none">
