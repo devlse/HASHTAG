@@ -36,7 +36,7 @@
         function showrecent() {
                 $.ajax({
                     type: "GET",
-                    url: "/",
+                    url: "/searchword",
                     data: {},
                     success: function (response) {
                         let searchwords = response['all_searchwords']
