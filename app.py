@@ -15,7 +15,7 @@ db = client.dbmakingchallenge
 
 
 #DB속 유저 리스트
-users = list(db.user.find({},{'_id':False}))
+users = list(db.user.find({},{'_id': False}))
 
 #유저 jwt 체크 데코레이터
 def check(func):

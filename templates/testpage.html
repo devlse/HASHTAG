@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+
+    <!-- 구글폰트 -->
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Nunito+Sans:wght@300&family=Source+Sans+Pro:wght@200&display=swap"
+          rel="stylesheet">
+
+    <title>하루살이</title>
+
+    <script>
+        //검색한 단어 저장
+        function searchWord() {
+            let word = $('#search-word').val()
+
+            $.ajax({
+                type: "POST",
+                url: "/searchword",
+                data: {searchWord_give: word},
+                success: function (response) {
+                    if(word==''){//단어 입력 안했을 때
+                        alert('값을 입력하세요!');
+                        window.location.reload();
+                    }
+                    else{ alert(response["msg"]); }
+                }
+            })
+        }
+
+    </script>
+</head>
+<body>
+<div>
+    <div>메인 화면-나중에 메인 페이지랑 합쳐야 함.</div>
+    <!--단어 검색-->
+    <div>
+        <input type="text" id="search-word" placeholder="검색어를 입력하시오">
+        <form action="/result"><button onclick="searchWord()" type="submit">검색</button></form>
+    </div>
+
+</div>
+
+</body>
+</html>
