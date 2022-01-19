@@ -16,11 +16,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- script -->
     <script>
+        // 쿠키 
         function setCookie(name, value, exp) {
             let date = new Date();
             date.setMinutes(date.getMinutes() + exp);
             document.cookie = name + '=' + value + ';e=xpires' + date.toUTCString() + ';path=/';
         };
+        // 로그인
         function login() {
             let id = $('#id').val()
             let pw = $('#pw').val()
@@ -42,7 +44,7 @@
                 }
             })
         }
-
+        // 엔터키 로그인 
         function enterkey() {
             if (window.event.keyCode == 13) {
                 login();
@@ -64,7 +66,7 @@
                 </br>
                 <input type="button" onclick="login()" value="Login" class="login-button">
             </form>
-            <div class="text-center">Don't have an account? <a href="/signup">Sign up</a> </div>
+            <div class="text-center">Don't have an account? <a href="/signup-page">Sign up</a> </div>
         </div>
     </div>
 </body>
