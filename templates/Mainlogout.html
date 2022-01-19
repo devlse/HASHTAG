@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <link rel="icon" href="../static/image/favicon.ico">
 
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
@@ -24,15 +25,15 @@
         $(document).ready(function () {
             showrecent();
         });
-         //로그인 페이지 이동
+        //로그인 페이지 이동
         function gotologin() {
             window.location.href = "/login-page"
         }
-         //회원 가입 페이지 이동
+        //회원 가입 페이지 이동
         function gotosignup() {
             window.location.href = "/signup-page"
         }
-         //전체 검색어 db에서 최근 값
+        //전체 검색어 db에서 최근 값
         function showrecent() {
             $.ajax({
                 type: "GET",
@@ -64,13 +65,16 @@
             $.ajax({
                 type: "POST",
                 url: "/searchword",
-                data: {searchWord_give: word},
+                data: {
+                    searchWord_give: word
+                },
                 success: function (response) {
-                    if(word==''){//단어 입력 안했을 때
+                    if (word == '') { //단어 입력 안했을 때
                         alert('값을 입력하세요!');
                         window.location.reload();
+                    } else {
+                        alert(response["msg"]);
                     }
-                    else{ alert(response["msg"]); }
                 }
             })
         }
@@ -171,7 +175,6 @@
             background: #FFFFFF;
             border-radius: 15px;
         }
-
     </style>
 </head>
 
@@ -190,17 +193,18 @@
         <div class="searchbox">
             <div class="title">CATCHTAG#</div>
             <div class="searchbtn">
-                <form action="/searched-result"><button onclick="searchWord()" type="submit" class="btn text-secondary btn-lg"
-                    style="background-color:white"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                        fill="#6667AB" class="bi bi-search" viewBox="0 0 16 16">
-                        <path
-                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                    </svg></button></form>
+                <form action="/searched-result"><button onclick="searchWord()" type="submit"
+                        class="btn text-secondary btn-lg" style="background-color:white"> <svg
+                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#6667AB"
+                            class="bi bi-search" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg></button></form>
             </div>
             <div class="input">
                 <form action="/searched-result" onkeyup="enterkey()">
-                <input id="search-word" class="form-control form-control-lg" type="text" placeholder="search"
-                    style="border: none; background: rgba(255, 255, 255, 0.5);" >
+                    <input id="search-word" class="form-control form-control-lg" type="text" placeholder="search"
+                        style="border: none; background: rgba(255, 255, 255, 0.5);">
                 </form>
             </div>
             <div class="recentbox">

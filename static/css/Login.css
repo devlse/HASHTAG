@@ -1,34 +1,49 @@
 @import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
-body {
+html {
+    margin: 0;
+    padding: 0;
     background: linear-gradient(103.81deg, #AB78FF 0.23%, #FFE484 100%) no-repeat;
-    height: 100vh;
+    height: 100%;
+    width: 100%;
     font-family: 'Nanum Gothic', sans-serif;
-    font-weight: 600;
+    font-weight: 500;
+    display: block;
 }
 
 .text-center {
     text-align: center;
 }
 
+/*////////////////////////////////////////*/
+
+.main-title {
+    font-weight: 800;
+    font-size: 50px;
+    margin: 40px 0;
+    color: white;
+    text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.5);
+}
+
+.main-title:hover {
+    cursor: pointer;
+}
+
 .glassmorphism {
-    width: 600px;
-    height: 750px;
-    left: 669px;
-    top: 216px;
+    width: 560px;
+    height: 700px;
 
     margin: auto;
-    margin-top: 90px;
+    margin-top: 50px;
     display: flex;
     align-items: center;
 
     background: rgba(255, 255, 255, 0.2);
-    border: 3px solid rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.4);
     box-sizing: border-box;
     backdrop-filter: blur(20px);
     /* Note: backdrop-filter has minimal browser support */
-    border-radius: 15px;
-    /*10px*/
+    border-radius: 10px;
 }
 
 .login-box {
@@ -40,17 +55,18 @@ body {
 }
 
 .login-title {
-    margin-bottom: 80px;
-    font-size: 40px;
+    margin-top: 30px;
+    margin-bottom: 70px;
+    font-size: 35px;
     font-weight: 700;
 }
 
 .input-button {
-    width: 350px;
+    width: 330px;
     background: rgba(255, 255, 255, 0.4);
     border: none;
     display: block;
-    margin: 10px auto 35px;
+    margin: 10px auto 30px;
     padding: 20px 15px;
     border-radius: 100px;
 }
@@ -64,7 +80,7 @@ body {
     padding: 15px 0;
     border-radius: 100px;
     display: block;
-    margin: 20px auto 100px;
+    margin: 30px auto 80px;
     font-size: 19px;
 }
 

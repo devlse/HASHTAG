@@ -9,6 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="icon" href="../static/image/favicon.ico">
 
     <!-- JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -17,10 +18,12 @@
     </script>
 
     <!-- 구글폰트 -->
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Nunito+Sans:wght@300&family=Source+Sans+Pro:wght@200&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Nunito+Sans:wght@300&family=Source+Sans+Pro:wght@200&display=swap"
+        rel="stylesheet">
 
 
-    <title>하루살이 | 관심기록</title>
+    <title>CATCHTAG# : 관심기록</title>
     <!--link rel="shortcut icon" href="#"-->
 
     <!-- style -->
@@ -54,10 +57,11 @@
                 data: {},
                 success: function (response) {
                     let record = response['all_searchs']
-                    for(let i = 0; i < record.length; i++){
+                    for (let i = 0; i < record.length; i++) {
                         let list = record[i]['myword']
                         let id_setting = record[i]['saving-num']
-                        let temp_html = `<div id="${id_setting}" onclick="listOpen(this.id)" style='cursor:pointer'>${list}</div>`
+                        let temp_html =
+                            `<div id="${id_setting}" onclick="listOpen(this.id)" style='cursor:pointer'>${list}</div>`
                         $('.hashtag').append(temp_html)
                     }
 
@@ -72,22 +76,25 @@
                 $('#saved-record-list').empty();
             } else {
                 $("#saved-record").show();
-                globalVariable = e;//id 값 가져오기
+                globalVariable = e; //id 값 가져오기
                 openedList(e);
             }
         }
-        function openedList(event){
+
+        function openedList(event) {
             $.ajax({
                 type: "POST",
                 url: "/searchitem",
-                data: { savenum_give: event },
+                data: {
+                    savenum_give: event
+                },
                 success: function (response) {
                     let items = response['items']
                     let myword = items[0]['myword']
                     let memo = items[0]['memo']
                     let keyword = items[0]['keyword']
                     let link = items[0]['link']
-                    let font_style ='font-weight: bold; font-style: italic; font-size: 1.2em;'
+                    let font_style = 'font-weight: bold; font-style: italic; font-size: 1.2em;'
                     console.log(items, myword, memo, keyword, link)
 
                     let temp_html = `<div class="form-group">
@@ -117,7 +124,7 @@
         }
 
         //관심기록 해제 = 내용 지우는 button
-        function deleteBtn(){
+        function deleteBtn() {
             //지우는거 + DB안에 저장된 내용도 지워짐
             const search_id = globalVariable;
             const div = document.getElementById(search_id);
@@ -127,8 +134,9 @@
                 alert('삭제되었습니다');
                 div.remove();
                 deleteContents(); //실행이 잘 되는건 별개로 오류가 나는데 왜 나는지 모르겠다**
+            } else {
+                $("#saved-record").show();
             }
-            else { $("#saved-record").show(); }
         }
         //지우는거 + DB안에 저장된 내용도 지운다
         function deleteContents() {
@@ -136,7 +144,9 @@
             $.ajax({
                 type: "POST",
                 url: "/delete-item",
-                data: { saved_num: searched_id },
+                data: {
+                    saved_num: searched_id
+                },
                 success: function (response) {
                     //let rm = response['remaining_items']
                     //console.log(rm)
@@ -157,12 +167,18 @@
                 <a href="/">CATCHTAG#</a>
             </div>
             <ul class="navbar__list">
-                <li><form action="#"><!--로그아웃용-->
+                <li>
+                    <form action="#">
+                        <!--로그아웃용-->
                         <button type="submit" class="btn btn-styling btn-event">Logout</button>
-                </form></li>
-                <li><form action="/main-page"><!--메인 화면으로 넘기기-->
+                    </form>
+                </li>
+                <li>
+                    <form action="/main-page">
+                        <!--메인 화면으로 넘기기-->
                         <button type="submit" class="btn btn-styling btn-event">다시 검색하기=메인화면으로</button>
-                </form></li>
+                    </form>
+                </li>
             </ul>
         </nav>
 
@@ -170,11 +186,15 @@
             <div style="text-align: center;">
                 <h1>내가 관심등록한 키워드</h1>
             </div>
-            <div class="hashtag"><!--내가 관심 등록한 단어들--></div>
+            <div class="hashtag">
+                <!--내가 관심 등록한 단어들-->
+            </div>
         </div>
 
         <div id="saved-record" class="form-post" style="display: none">
-            <div id="saved-record-list"><!--디비에서 불러온 내용을 담을 공간--></div>
+            <div id="saved-record-list">
+                <!--디비에서 불러온 내용을 담을 공간-->
+            </div>
             <button type="button" class="btn btn-styling" onclick="deleteBtn()" style="margin-top: 16px;">삭제버튼이다!
             </button>
         </div>

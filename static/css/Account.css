@@ -1,38 +1,52 @@
 @import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
-body {
+html {
+    margin: 0;
+    padding: 0;
     background: linear-gradient(103.81deg, #AB78FF 0.23%, #FFE484 100%) no-repeat;
-    height: 100vh;
+    height: 100%;
+    width: 100%;
     font-family: 'Nanum Gothic', sans-serif;
-    font-weight: 600;
+    font-weight: 500;
+    display: block;
 }
 
 .text-center {
     text-align: center;
 }
 
+/*////////////////////////*/
+
+.main-title {
+    font-weight: 800;
+    font-size: 50px;
+    margin: 40px 0;
+    color: white;
+    text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.5);
+}
+
+.main-title:hover {
+    cursor: pointer;
+}
 
 .glassmorphism {
-    width: 600px;
-    height: 750px;
-    left: 669px;
-    top: 216px;
+    width: 560px;
+    height: 700px;
 
     margin: auto;
-    margin-top: 90px;
+    margin-top: 50px;
     display: flex;
     align-items: center;
 
     background: rgba(255, 255, 255, 0.2);
-    border: 3px solid rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.4);
     box-sizing: border-box;
     backdrop-filter: blur(20px);
     /* Note: backdrop-filter has minimal browser support */
-    border-radius: 15px;
-    /*10px*/
+    border-radius: 10px;
 }
 
-.login-box {
+.account-box {
     width: 400px;
     height: 600px;
     margin: auto;
@@ -40,14 +54,15 @@ body {
     color: white;
 }
 
-.login-title {
-    margin-bottom: 110px;
-    font-size: 40px;
+.account-title {
+    margin-top: 50px;
+    margin-bottom: 80px;
+    font-size: 35px;
     font-weight: 700;
 }
 
 .input-button {
-    width: 350px;
+    width: 330px;
     background: rgba(255, 255, 255, 0.4);
     border: none;
     display: block;
@@ -56,7 +71,7 @@ body {
     border-radius: 100px;
 }
 
-.login-button {
+.signup-button {
     width: 200px;
     background: #6667AB;
     box-shadow: 0px 4px 7px rgba(69, 146, 218, 0.25);
@@ -65,15 +80,15 @@ body {
     padding: 15px 0;
     border-radius: 100px;
     display: block;
-    margin: 50px auto;
+    margin: 30px auto;
     font-size: 19px;
 }
 
-.login-button:hover {
+.signup-button:hover {
     cursor: pointer;
 }
 
-.login-box a {
+.account-box a {
     text-decoration: none;
     color: white;
 }

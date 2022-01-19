@@ -12,11 +12,13 @@
         rel="stylesheet">
     <!-- CSS -->
     <link rel="stylesheet" href="../static/css/Account.css">
+    <link rel="icon" href="../static/image/favicon.ico">
     <!-- ajax -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- script -->
     <script src="/static/js/cookie.js"></script>
     <script>
+        // 회원가입 서버로 넘겨줌
         function account() {
             let id = $('#id').val()
             let pw = $('#pw').val()
@@ -38,27 +40,33 @@
                 }
             })
         }
+        // 메인페이지 연결
+        function linkMain() {
+            window.location.href = '/'
 
+        }
+        // 엔터키 
         function enterkey() {
             if (window.event.keyCode == 13) {
                 account();
             }
         }
     </script>
-    <title>회원가입</title>
+    <title>CATCHTAG# : 회원가입</title>
 </head>
 
 <body>
+    <div class="main-title text-center" onclick="linkMain()">CATCHTAG</div>
     <div class="glassmorphism">
-        <div class="login-box">
-            <div class="login-title text-center">Create Account</div>
+        <div class="account-box">
+            <div class="account-title text-center">Create Account</div>
             <form action="" onkeyup="enterkey()">
                 <div>ID</div>
                 <input type="text" class="input-button" id="id" placeholder="Input your ID">
                 <div>Password</div>
                 <input type="password" class="input-button" id="pw" placeholder="Input your Password">
                 </br>
-                <input type="button" onclick="account()" value="Sign up" class="login-button">
+                <input type="button" onclick="account()" value="Sign up" class="signup-button">
             </form>
         </div>
     </div>

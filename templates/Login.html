@@ -12,17 +12,18 @@
         rel="stylesheet">
     <!-- CSS -->
     <link rel="stylesheet" href="../static/css/Login.css">
+    <link rel="icon" href="../static/image/favicon.ico">
     <!-- ajax -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- script -->
     <script>
-        // 쿠키 
+        // 쿠키 저장
         function setCookie(name, value, exp) {
             let date = new Date();
             date.setMinutes(date.getMinutes() + exp);
-            document.cookie = name + '=' + value + ';e=xpires' + date.toUTCString() + ';path=/';
+            document.cookie = name + '=' + value + '; expires=' + date.toUTCString() + '; path=/';
         };
-        // 로그인
+        // 로그인 - 서버로 입력받은 값 넘겨주고 유저인지 확인
         function login() {
             let id = $('#id').val()
             let pw = $('#pw').val()
@@ -44,6 +45,10 @@
                 }
             })
         }
+        // 메인페이지 연결
+        function linkMain() {
+            window.location.href = '/'
+        }
         // 엔터키 로그인 
         function enterkey() {
             if (window.event.keyCode == 13) {
@@ -51,10 +56,11 @@
             }
         }
     </script>
-    <title>로그인</title>
+    <title>CATCHTAG# : 로그인</title>
 </head>
 
 <body>
+    <div class="main-title text-center" onclick="linkMain()">CATCH TAG</div>
     <div class="glassmorphism">
         <div class="login-box">
             <div class="login-title text-center">LOGIN</div>
