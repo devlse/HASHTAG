@@ -13,10 +13,6 @@ from pymongo import MongoClient
 client = MongoClient('localhost', 27017)
 db = client.dbmakingchallenge
 
-
-#DB속 유저 리스트
-users = list(db.user.find({},{'_id': False}))
-
 #유저 jwt 체크 데코레이터
 def check(func):
     def check_Token():
@@ -80,6 +76,7 @@ def temporaryMainPage():
 #로그인버튼
 @app.route('/login', methods=['POST'])
 def login():
+    users = list(db.user.find({}, {'_id': False}))
     id_receive = request.form['id_give']
     pw_receive = request.form['pw_give']
 
