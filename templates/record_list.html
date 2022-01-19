@@ -154,13 +154,13 @@
         <nav class="navbar">
             <div class="navbar__logo">
                 <!--메인화면으로 링크넣기!-->
-                <a href="/">하 루 살 이</a>
+                <a href="/">CATCHTAG#</a>
             </div>
             <ul class="navbar__list">
                 <li><form action="#"><!--로그아웃용-->
                         <button type="submit" class="btn btn-styling btn-event">Logout</button>
                 </form></li>
-                <li><form action="/"><!--메인 화면으로 넘기기-->
+                <li><form action="/main-page"><!--메인 화면으로 넘기기-->
                         <button type="submit" class="btn btn-styling btn-event">다시 검색하기=메인화면으로</button>
                 </form></li>
             </ul>
@@ -170,11 +170,7 @@
             <div style="text-align: center;">
                 <h1>내가 관심등록한 키워드</h1>
             </div>
-            <div class="hashtag">
-                <!--temp_html에 밑의 두 함수 포함하기!-->
-                <div id="aaa" onclick="listOpen(this.id)" style='cursor:pointer'>저장했던 해시태그</div>
-                <div id="bbb">bbbbbb</div>
-            </div>
+            <div class="hashtag"><!--내가 관심 등록한 단어들--></div>
         </div>
 
         <div id="saved-record" class="form-post" style="display: none">

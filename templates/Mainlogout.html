@@ -74,6 +74,12 @@
                 }
             })
         }
+        // 엔터키 검색
+        function enterkey() {
+            if (window.event.keyCode == 13) {
+                searchWord();
+            }
+        }
     </script>
 
     <script defer src="../static/js/search.js"></script>
@@ -192,8 +198,10 @@
                     </svg></button></form>
             </div>
             <div class="input">
+                <form action="/searched-result" onkeyup="enterkey()">
                 <input id="search-word" class="form-control form-control-lg" type="text" placeholder="search"
                     style="border: none; background: rgba(255, 255, 255, 0.5);" >
+                </form>
             </div>
             <div class="recentbox">
                 <div class="list-group" id="recentsearch">
