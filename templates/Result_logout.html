@@ -1,0 +1,126 @@
+<!Doctype html>
+<html lang="ko">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="icon" href="../static/image/favicon.ico">
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+
+    <!-- 구글폰트 -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Nunito+Sans:wght@300&family=Source+Sans+Pro:wght@200&display=swap"
+        rel="stylesheet">
+
+
+    <title>CATCHTAG#</title>
+    <link rel="shortcut icon" href="#">
+
+    <!-- style -->
+    <link href="../static/css/Result.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .wrap {
+            width: 900px;
+            margin: auto;
+        }
+    </style>
+    <script>
+        let globalVariable;
+        let saveSearchedWord;
+
+        $(document).ready(function () {
+            $('#crawl-result-item').remove();
+            searchword();
+        });
+
+        /////////
+
+        //마지막 값=가장 최근에 검색한 단어 불러오기
+        function searchword() {
+            $.ajax({
+                type: "GET",
+                url: "/search",
+                data: {},
+                success: function (response) {
+                    let words = response['search_word'];
+                    let searched = words[words.length - 1]['search']
+
+                    saveSearchedWord = searched;
+
+                    //id값 만들기
+                    const now = new Date();
+                    const year = now.getFullYear();
+                    const month = ("0" + (1 + now.getMonth())).slice(-2);
+                    const day = ("0" + now.getDate()).slice(-2);
+                    const hours = ('0' + now.getHours()).slice(-2);
+                    const minutes = ('0' + now.getMinutes()).slice(-2);
+                    const seconds = ('0' + now.getSeconds()).slice(-2);
+                    globalVariable = year + hours + day + seconds + minutes + month;
+
+                    let temp_html = `<h1><span id="${globalVariable}">${searched}</span>(으)로 검색한 결과입니다</h1>`
+                    $('#my-searched-result').append(temp_html)
+
+                    //이미지 제목 불러오기
+                    let image = response['image'];
+                    let image_route_split = image.split("/")
+                    let image_route = image_route_split[image_route_split.length-1]
+                    //console.log(image_route)
+                    let temp_html_image = `<div id="crawl-result-item">
+                                            <img src="../static/image/${image_route}">
+                                            </div>`
+                    $('#crawl-results').append(temp_html_image)
+                }
+            })
+        }
+
+        //새로고침 버튼. 사진 저장 시간이 좀 걸리고 새로고침을 해줘야 사진이 화면에 떠서 만들었다.
+        function openResult() {window.location.reload();}
+
+    </script>
+
+</head>
+
+<body>
+    <div class="wrap">
+
+        <!--상단-->
+        <nav class="navbar">
+            <div class="navbar__logo">
+                <!--메인 화면으로 링크!-->
+                <form action="/"><a type="submit" href="/">CATCHTAG#</a></form>
+            </div>
+            <ul class="navbar__list">
+                <li><form action="/login-page"><!--로그인 버튼-->
+                        <button type="submit" class="btn btn-styling btn-event">LogIn</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+
+        <!--결과화면-->
+        <div class="searching-result" style="padding-top: 20px">
+            <div class="phrases" id="my-searched-result" style="text-align: center;">
+                <!--[검색결과]로 검색한 결과입니다--></div>
+            <!--크롤링한 결과들-->
+            <div class="hashtag">
+                <div id="crawl-results"><!--크롤링 결과 이미지가 붙는 위치-->
+                    <!--사진이 올라가는 데 시간이 좀 걸려서 새로고침 한 번*****-->
+                    <button onclick="openResult()">결과보기</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

@@ -73,10 +73,15 @@ def login_page():
 def signup_Page():
     return render_template('Account.html')
 
-#검색결과 보여주는 페이지
+#검색결과 보여주는 페이지 - 로그인 했을 때
 @app.route('/searched-result')
 def resultPage():
     return render_template('Result.html')
+
+#검색결과 보여주는 페이지 - 로그아웃 상태
+@app.route('/searched-result-logout')
+def resultPage_out():
+    return render_template('Result_logout.html')
 
 #관심단어 등록 페이지
 @app.route('/myword-page')
