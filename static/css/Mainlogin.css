@@ -73,12 +73,3 @@
     background: #FFFFFF;
     border-radius: 10px;
 }
-
-.recentbox {
-    position: fixed;
-    width: 400px;
-    margin: 130px auto auto 0px;
-
-    background: #FFFFFF;
-    border-radius: 15px;
-}
