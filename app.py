@@ -259,10 +259,6 @@ def searchaaa():
     global file_route #이미지 경로 받아오기 위함
     return jsonify({'search_word': word, 'image': file_route})
 
-@app.route('/recentword', methods=['GET'])
-def recent_get():
-    recent = list(db.searchword.find({}).sort({'_id': -1}).limit(3))
-    return jsonify({'recent_word': recent})
 
 #검색어와 메모 저장
 @app.route('/result-save', methods=['POST'])
