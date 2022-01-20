@@ -104,7 +104,7 @@ def login():
             if bcrypt.checkpw(pw_receive.encode('utf-8'), check_password):
                 payload={
                     'user_id':id_receive,
-                    'exp':datetime.utcnow() + timedelta(seconds=5)
+                    'exp':datetime.utcnow() + timedelta(minutes=MIN)
                     # 'exp': datetime.utcnow() + timedelta(minutes=10)
                 }
                 # 토큰인코딩
@@ -164,7 +164,6 @@ def crawling(search_word_receive):
     options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
     service_instance = Service('C:/Users/song/Desktop/pro2/HASHTAG/backend/crawling_machine/chromedriver.exe')  # 상대경로절대경로
-    # song4 - C:/Users/song/Desktop/pro2/HASHTAG/backend/crawling_machine
 
     driver = webdriver.Chrome(service=service_instance, options=options)
 
@@ -242,7 +241,6 @@ def crawling(search_word_receive):
     label_count = 0
 
     wordcloud = WordCloud(
-        # song4 - C: / Users / song / Desktop / pro2 / HASHTAG / backend / crawling_machine / Fonts
         font_path='C:/Users/song/Desktop/pro2/HASHTAG/backend/crawling_machine/Fonts/GmarketSansTTFBold.ttf',  # 상대경로절대경로
         background_color='white',
         width=800,
@@ -255,7 +253,6 @@ def crawling(search_word_receive):
     # plt.axis('off')
     # plt.show()
     label_count += 1
-    # song4 - C:/Users/song/Desktop/pro2/HASHTAG/static/image
     file_route_in = 'C:/Users/song/Desktop/pro2/HASHTAG/static/image/test' + str(
         plusUrl) + current + '.png'  # 상대경로절대경로
     global file_route  # 이미지 주소 저장 위한 전역변수
