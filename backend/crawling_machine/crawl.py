@@ -21,7 +21,7 @@ url = baseUrl + quote_plus(plusUrl)
 options = webdriver.ChromeOptions()
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
-service_instance = Service('backend\crawling_machine\chromedriver.exe')
+service_instance = Service('C:/Users/내문서/Desktop/sparta/HASHTAG/backend/crawling_machine/chromedriver.exe')
 
 driver = webdriver.Chrome(service=service_instance, options=options)
 
@@ -95,7 +95,7 @@ counts = Counter(data)
 tags = counts.most_common(40)
 label_count = 0
 
-wordcloud = WordCloud(font_path='backend\crawling_machine\Fonts\GmarketSansTTFBold.ttf',
+wordcloud = WordCloud(font_path='C:/Users/내문서/Desktop/sparta/HASHTAG/backend/crawling_machine/Fonts/GmarketSansTTFBold.ttf',
     background_color='white',
     width=800,
     height=800
@@ -107,4 +107,4 @@ print(dict(tags))
 #plt.axis('off')
 #plt.show()
 label_count+=1
-wc_img.to_file('static/image/test'+str(plusUrl)+'.jpg')
+wc_img.to_file('C:/Users/내문서/Desktop/sparta/HASHTAG/static/image/test'+str(plusUrl)+'.jpg')
