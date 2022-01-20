@@ -50,7 +50,7 @@
             height: 40px;
             margin: 5px 5px;
             padding: 10px;
-            border-radius: 16px;
+            border-radius: 64px;
             border: 1px solid #7e7b7b;
         }
     </style>
@@ -105,30 +105,43 @@
                     let memo = items[0]['memo']
                     let keyword = items[0]['keyword']
                     let link = items[0]['link']
+
+                    //이미지 제목 불러오기
+                    let image = items[0]['image']
+                    let image_route_split = image.split("/")
+                    let image_route = image_route_split[image_route_split.length-1]
+                    console.log(items, myword, memo, keyword, link, image, image_route)
+
+
                     let font_style = 'font-weight: bold; font-style: italic; font-size: 1.2em;'
-                    console.log(items, myword, memo, keyword, link)
+                    let image_size = `width: 398px; border: 0; height: 390px;` //*****이미지 크기 조절!!
+                    let temp_html_image = `<div id="crawl-result-item">
+                                            <img src="../static/image/${image_route}" style="${image_size}"/>
+                                            </div>`
 
                     let temp_html = `<div class="form-group">
                                         <hr>
-                                        <label for="area-crawling" style="${font_style}">검색단어</label>
-                                        <div id="area-crawling">${myword}<br>((사실은 크롤링 결과 넣을 자리))</div>
+                                        <label for="area-crawling" style="${font_style}"> #${myword} </label>
                                     </div>
+                                    <hr>
+                                    ${temp_html_image}
                                     <hr>
                                     <div class="form-group">
                                         <label for="area-memo" style="${font_style}">메모</label>
-                                        <div id="area-memo">${memo}</div>
+                                        <div id="area-memo"> ${memo}</div>
                                     </div>
                                     <hr>
                                     <div class="form-group">
                                         <label for="area-keyword" style="${font_style}">중요키워드</label>
-                                        <div id="area-keyword">${keyword}</div>
+                                        <div id="area-keyword"> ${keyword}</div>
                                     </div>
                                     <hr>
                                     <div class="form-group">
                                         <label for="area-link" style="${font_style}">링크</label>
-                                        <div id="area-link">${link}</div>
+                                        <div id="area-link"> ${link}</div>
                                     </div>
                                     <hr>`
+
                     $('#saved-record-list').append(temp_html)
                 }
             })
@@ -161,6 +174,7 @@
                 success: function (response) {
                     //let rm = response['remaining_items']
                     //console.log(rm)
+                    $("#saved-record-list").empty();
                 }
             })
         }
@@ -187,7 +201,7 @@
                 <li>
                     <form action="/main-page">
                         <!--메인 화면으로 넘기기-->
-                        <button type="submit" class="btn btn-styling btn-event">다시 검색하기=메인화면으로</button>
+                        <button type="submit" class="btn btn-styling btn-event">다시 검색하기</button>
                     </form>
                 </li>
             </ul>
@@ -202,6 +216,7 @@
             </div>
         </div>
 
+        <!--클릭해야 보인다-->
         <div id="saved-record" class="form-post" style="display: none">
             <div id="saved-record-list">
                 <!--디비에서 불러온 내용을 담을 공간-->

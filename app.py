@@ -83,11 +83,6 @@ def resultPage():
 def mywordPage():
     return render_template('record_list.html')
 
-#임시 메인 페이지
-@app.route('/temporary-main-page')
-def temporaryMainPage():
-    return render_template('testpage.html')
-
 ###
 
 
