@@ -3,11 +3,24 @@
 }
 a{
   text-decoration: none;
-  color: white;
+  color: #595656;
+  font-weight: bold;
 }
 a:hover{
   text-decoration: none;
-  color: white;
+  color: #424040;
+}
+body {
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(104deg, #AB78FF 0%, #FFE484 100%);
+}
+
+h1 {
+    font-weight: bold;
+    color: #fff8f8;
 }
 
 .btn-styling{
@@ -21,12 +34,13 @@ a:hover{
 
 /*상단*/
 .navbar{
-  display: flex;
-  justify-content: space-between; /*수평*/
-  align-items: center;/*수직*/
-  background-color: rgb(236, 220, 220);
-  padding: 8px 12px;
-  margin: 30px 10px;
+    display: flex;
+    justify-content: space-between; /*수평*/
+    align-items: center; /*수직*/
+    background-color: #FFFFFF;
+    padding: 8px 12px;
+    margin: 50px 150px 20px 150px;
+    border-radius: 15px;
 }
 
 .navbar__logo{
@@ -51,8 +65,8 @@ a:hover{
 .hashtag {
   padding: 30px 100px 30px 50px;
   margin: auto;
-  background: rgba(171, 120, 255, 0.25);
+  background: rgba(255, 255, 255, 0.5);
   /*가운데 정렬!!!*/
-  width: 100%;
+  /width: 100%;
   text-align: center;
 }

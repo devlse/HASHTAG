@@ -202,7 +202,7 @@ def crawling(search_word_receive):
     # 이 first_post가 없을때의 에러 처리 (검색어입력이 잘못되었을때)
 
     data = []
-    crawl_post_number = 5
+    crawl_post_number = 5 #*****이 숫자의 의미는 무엇인지
     for i in range(crawl_post_number):
         time.sleep(3)
         # hashtag_array = WebDriverWait(driver,10).until(EC.visibility_of_all_elements_located((By.CSS_SELECTOR , 'a.xil3i')))

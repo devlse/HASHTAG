@@ -23,19 +23,23 @@
         rel="stylesheet">
 
 
-    <title>CATCHTAG#</title>
+    <title>CATCHTAG# | 결과</title>
     <link rel="shortcut icon" href="#">
 
     <!-- style -->
     <link href="../static/css/Result.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
+        html{
+            background: linear-gradient(104deg, #AB78FF 0%, #FFE484 100%);
+        }
         .wrap {
-            width: 900px;
             margin: auto;
+            height: 100%;
+            overflow: auto;
         }
 
         #post-box {
-            background: rgba(171, 120, 255, 0.25);
+            background: rgba(255, 255, 255, 0.5);
             width: 500px;
             margin: 20px auto;
             padding: 50px;
@@ -189,7 +193,7 @@
         </div>
 
         <!--저장버튼 누르면 열리는 메모박스-->
-        <div id="post-box" class="form-post" style="display:none">
+        <div id="post-box" class="form-post" style="display:none;">
             <div>
                 <div class="form-group">
                     <label for="area-memo">메모남기기</label>

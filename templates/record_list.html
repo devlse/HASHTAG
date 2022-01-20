@@ -29,13 +29,17 @@
     <!-- style -->
     <link href="../static/css/Result.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
+        html{
+            background: linear-gradient(104deg, #AB78FF 0%, #FFE484 100%);
+        }
         .wrap {
-            width: 900px;
             margin: auto;
+            height: 100%;
+            overflow: auto;
         }
 
         #saved-record {
-            background: rgba(171, 120, 255, 0.25);
+            background: rgba(255, 255, 255, 0.5);
             width: 500px;
             margin: 20px auto;
             padding: 50px;
@@ -195,7 +199,7 @@
                 <li>
                     <form action="/">
                         <!--로그아웃용-->
-                        <button type="submit" class="btn btn-styling btn-event">Logout</button>
+                        <button type="submit" class="btn btn-styling btn-event">LogOut</button>
                     </form>
                 </li>
                 <li>
@@ -217,7 +221,7 @@
         </div>
 
         <!--클릭해야 보인다-->
-        <div id="saved-record" class="form-post" style="display: none">
+        <div id="saved-record" class="form-post" style="display: none;">
             <div id="saved-record-list">
                 <!--디비에서 불러온 내용을 담을 공간-->
             </div>
