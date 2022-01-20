@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request, redirect
 from datetime import datetime, timedelta
 from pytz import timezone
 import bcrypt
@@ -42,7 +42,7 @@ def check(func):
             user_id = jwt.decode(cookie, secret, algorithm)['user_id']
             return func(user_id)
         except jwt.ExpiredSignatureError:
-            return jsonify({'msg':'로그인 시간이 만료되었습니다.'})
+            return redirect('/login-page')
         except jwt.exceptions.DecodeError:
             return jsonify({'msg': "로그인 정보가 존재하지 않습니다."})
     check_Token.__name__ = func.__name__
@@ -104,7 +104,7 @@ def login():
             if bcrypt.checkpw(pw_receive.encode('utf-8'), check_password):
                 payload={
                     'user_id':id_receive,
-                    'exp':datetime.utcnow() + timedelta(minutes=MIN)
+                    'exp':datetime.utcnow() + timedelta(seconds=5)
                     # 'exp': datetime.utcnow() + timedelta(minutes=10)
                 }
                 # 토큰인코딩
@@ -163,7 +163,8 @@ def crawling(search_word_receive):
     options = webdriver.ChromeOptions()
     options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
-    service_instance = Service('C:/Users/내문서/Desktop/sparta/HASHTAG/backend/crawling_machine/chromedriver.exe')  # 상대경로절대경로
+    service_instance = Service('C:/Users/song/Desktop/pro2/HASHTAG/backend/crawling_machine/chromedriver.exe')  # 상대경로절대경로
+    # song4 - C:/Users/song/Desktop/pro2/HASHTAG/backend/crawling_machine
 
     driver = webdriver.Chrome(service=service_instance, options=options)
 
@@ -241,7 +242,8 @@ def crawling(search_word_receive):
     label_count = 0
 
     wordcloud = WordCloud(
-        font_path='C:/Users/내문서/Desktop/sparta/HASHTAG/backend/crawling_machine/Fonts/GmarketSansTTFBold.ttf',  # 상대경로절대경로
+        # song4 - C: / Users / song / Desktop / pro2 / HASHTAG / backend / crawling_machine / Fonts
+        font_path='C:/Users/song/Desktop/pro2/HASHTAG/backend/crawling_machine/Fonts/GmarketSansTTFBold.ttf',  # 상대경로절대경로
         background_color='white',
         width=800,
         height=800
@@ -253,7 +255,8 @@ def crawling(search_word_receive):
     # plt.axis('off')
     # plt.show()
     label_count += 1
-    file_route_in = 'C:/Users/내문서/Desktop/sparta/HASHTAG/static/image/test' + str(
+    # song4 - C:/Users/song/Desktop/pro2/HASHTAG/static/image
+    file_route_in = 'C:/Users/song/Desktop/pro2/HASHTAG/static/image/test' + str(
         plusUrl) + current + '.png'  # 상대경로절대경로
     global file_route  # 이미지 주소 저장 위한 전역변수
     file_route = file_route_in  # 전역변수
@@ -268,28 +271,31 @@ def searchaaa():
 
 #검색어와 메모 저장
 @app.route('/result-save', methods=['POST'])
-def saving_memo():
+@check
+def saving_memo(id):
     myword_receive = request.form['myword_give'] #검색한 단어
     num_receive = request.form['num_give'] #아이디값 저장
     memo_receive = request.form['memo_give']
     keyword_receive = request.form['keyword_give']
     link_receive = request.form['link_give']
-
+    id = id
     doc = {
         'myword': myword_receive,
         'saving-num': num_receive,
         'memo': memo_receive,
         'keyword': keyword_receive,
         'link': link_receive,
-        'image': file_route #이미지 경로 추가
+        'image': file_route, #이미지 경로 추가
+        'user_id': id
     }
     db.onedaylive.insert_one(doc)
     return jsonify({'msg' : '검색어가 저장되었습니다.'}) #검색어 보여주기
 
 #저장된 단어들 보여줌
 @app.route('/searchlist', methods=['GET'])
-def record():
-    searchs = list(db.onedaylive.find({}, {'_id': False}))
+@check
+def record(id):
+    searchs = list(db.onedaylive.find({'user_id':id}, {'_id': False}))
     return jsonify({'all_searchs': searchs})
 
 #저장된 결과들 보여줌 = 특정 한 단어에 대한 결과-메모,키워드,링크 만 보여줌
