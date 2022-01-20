@@ -53,7 +53,7 @@
         let saveSearchedWord;
 
         $(document).ready(function () {
-            $('#crawl-result-item').remove();
+            $('#crawl-results *').remove();
             searchword();
         });
 
@@ -169,9 +169,10 @@
                 <!--[검색결과]로 검색한 결과입니다--></div>
             <!--크롤링한 결과들-->
             <div class="hashtag">
-                <div id="crawl-results"><!--크롤링 결과 이미지가 붙는 위치-->
-                    <!--사진이 올라가는 데 시간이 좀 걸려서 새로고침 한 번*****-->
-                    <button onclick="openResult()">결과보기</button>
+                <!--사진이 올라가는 데 시간이 좀 걸려서 새로고침 한 번*****-->
+                <button onclick="openResult()">결과보기</button>
+                <div id="crawl-results">
+                    <!--크롤링 결과 이미지가 붙는 위치-->
                 </div>
             </div>
             <!--저장용 버튼-->

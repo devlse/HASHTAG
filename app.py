@@ -150,7 +150,7 @@ def search_post():
             'search': search_word_receive
         }
         db.searchword.insert_one(doc)
-    crawling(search_word_receive) #실질적인 크롤링
+        crawling(search_word_receive) #실질적인 크롤링
     return jsonify({'msg': '결과 보러가기'})
 #crawling - 실질적인 크롤링
 def crawling(search_word_receive):
@@ -169,8 +169,8 @@ def crawling(search_word_receive):
 
     driver.get("https://www.instagram.com/accounts/login/")
 
-    instagram_id = "moongirl1148@gmail.com"
-    instagram_pwd = "tmvkfmxktlaghk"  # 스파르타심화
+    instagram_id = "spartasimhwa@gmail.com"
+    instagram_pwd = "sparta3" #"tmvkfmxktlaghk"  # 스파르타심화
 
     id_space = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.NAME, 'username')))
     id_space.send_keys(instagram_id)
@@ -188,7 +188,8 @@ def crawling(search_word_receive):
 
     save_later_button = WebDriverWait(driver, 10).until(
         EC.visibility_of_element_located(
-            (By.XPATH, '//*[@id="react-root"]/div/div/section/main/div/div/div/div/button')))
+            (By.XPATH, '//*[@id="react-root"]/section/main/div/div/div/div/button')))
+                    #//*[@id="react-root"]/div/div/section/main/div/div/div/div/button 에서 수정됨*****
     save_later_button.click()
 
     # 여기서 함수 끊어주면 좋을 것 같은디 우선 이어서..!
@@ -253,7 +254,7 @@ def crawling(search_word_receive):
     # plt.show()
     label_count += 1
     file_route_in = 'C:/Users/내문서/Desktop/sparta/HASHTAG/static/image/test' + str(
-        plusUrl) + current + '.jpg'  # 상대경로절대경로
+        plusUrl) + current + '.png'  # 상대경로절대경로
     global file_route  # 이미지 주소 저장 위한 전역변수
     file_route = file_route_in  # 전역변수
     wc_img.to_file(file_route_in)
