@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
     <link rel="icon" href="../static/image/favicon.ico">
+    <link rel="stylesheet" href="../static/css/Mainlogout.css">
 
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
@@ -70,10 +71,8 @@
                 },
                 success: function (response) {
                     if (word == '') { //단어 입력 안했을 때
-                        alert('값을 입력하세요!');
+                        alert('검색어를 입력해주세요!');
                         window.location.reload();
-                    } else {
-                        alert(response["msg"]);
                     }
                 }
             })
@@ -89,93 +88,6 @@
     <script defer src="../static/js/search.js"></script>
 
     <title>CATCHTAG#</title>
-
-    <style>
-        * {
-            font-family: 'Nanum Gothic', sans-serif;
-        }
-
-        .mainbg {
-            position: fixed;
-            z-index: 1;
-            width: 100%;
-            height: 100%;
-
-            background: linear-gradient(104deg, #AB78FF 0%, #FFE484 100%);
-        }
-
-        .main {
-            position: fixed;
-            z-index: 2;
-            width: 1300px;
-            margin: 50px auto;
-            left: 0;
-            right: 0;
-        }
-
-        .headerbox {
-            width: 1300px;
-            height: 80px;
-            margin: 0 auto;
-
-            background: #FFFFFF;
-            border-radius: 15px;
-        }
-
-        .loginbtn {
-            position: fixed;
-            margin: 20px 1090px auto;
-        }
-
-        .signupbtn {
-            position: fixed;
-            margin: 20px 1180px auto;
-        }
-
-        .searchbox {
-            position: fixed;
-            width: 450px;
-            margin: 150px auto;
-            left: 0;
-            right: 0;
-        }
-
-        .title {
-            position: fixed;
-            width: 400px;
-            margin: 0 auto;
-            font-style: normal;
-            font-weight: 800;
-            font-size: 50px;
-            line-height: 60px;
-
-            text-align: center;
-            color: #FFFFFF;
-        }
-
-        .input {
-            position: fixed;
-            width: 400px;
-            margin: 72px auto;
-        }
-
-        .searchbtn {
-            position: fixed;
-            margin: 70px 410px auto;
-
-            background: #FFFFFF;
-            border-radius: 10px;
-        }
-
-        .recentbox {
-            position: fixed;
-            width: 400px;
-            margin: 130px auto auto 0px;
-
-            background: #FFFFFF;
-            border-radius: 15px;
-        }
-    </style>
 </head>
 
 <body>
@@ -202,9 +114,9 @@
                         </svg></button></form>
             </div>
             <div class="input">
-                <form action="/searched-result" onkeyup="enterkey()">
+                <form action="/searched-result">
                     <input id="search-word" class="form-control form-control-lg" type="text" placeholder="search"
-                        style="border: none; background: rgba(255, 255, 255, 0.5);">
+                        style="border: none; background: rgba(255, 255, 255, 0.5);" onkeypress="enterkey()">
                 </form>
             </div>
             <div class="recentbox">

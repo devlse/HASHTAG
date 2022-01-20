@@ -127,10 +127,11 @@ def signup():
 @app.route('/searchword', methods=['POST'])
 def search_post():
     search_word_receive = request.form['searchWord_give']
-    doc = {
-        'search': search_word_receive
-    }
-    db.searchword.insert_one(doc)
+    if search_word_receive != "":
+        doc = {
+            'search': search_word_receive
+        }
+        db.searchword.insert_one(doc)
     return jsonify({'msg': '결과 보러가기'})
 
 @app.route('/search', methods=['GET'])
