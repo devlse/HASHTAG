@@ -67,6 +67,6 @@ h1 {
   margin: auto;
   background: rgba(255, 255, 255, 0.5);
   /*가운데 정렬!!!*/
-  /width: 100%;
+  width: 1000px;
   text-align: center;
 }

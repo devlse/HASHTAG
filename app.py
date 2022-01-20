@@ -163,7 +163,7 @@ def crawling(search_word_receive):
     options = webdriver.ChromeOptions()
     options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
-    service_instance = Service('C:/Users/song/Desktop/pro2/HASHTAG/backend/crawling_machine/chromedriver.exe')  # 상대경로절대경로
+    service_instance = Service('C:/Users/내문서/Desktop/sparta/HASHTAG/backend/crawling_machine/chromedriver.exe')  # 상대경로절대경로
 
     driver = webdriver.Chrome(service=service_instance, options=options)
 
@@ -241,7 +241,7 @@ def crawling(search_word_receive):
     label_count = 0
 
     wordcloud = WordCloud(
-        font_path='C:/Users/song/Desktop/pro2/HASHTAG/backend/crawling_machine/Fonts/GmarketSansTTFBold.ttf',  # 상대경로절대경로
+        font_path='C:/Users/내문서/Desktop/sparta/HASHTAG/backend/crawling_machine/Fonts/GmarketSansTTFBold.ttf',  # 상대경로절대경로
         background_color='white',
         width=800,
         height=800
@@ -253,7 +253,7 @@ def crawling(search_word_receive):
     # plt.axis('off')
     # plt.show()
     label_count += 1
-    file_route_in = 'C:/Users/song/Desktop/pro2/HASHTAG/static/image/test' + str(
+    file_route_in = 'C:/Users/내문서/Desktop/sparta/HASHTAG/static/image/test' + str(
         plusUrl) + current + '.png'  # 상대경로절대경로
     global file_route  # 이미지 주소 저장 위한 전역변수
     file_route = file_route_in  # 전역변수
